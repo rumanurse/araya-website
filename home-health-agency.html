@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ARAYA Consulting — Home Health Agency Division</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --white:   #FFFFFF;
+  --cream:   #FAF8F5;
+  --cream2:  #F3EFE8;
+  --sand:    #E8E1D5;
+  --teal:    #0D6B6B;
+  --teal2:   #1A8A8A;
+  --teal3:   #2DD4BF;
+  --gold:    #B8860B;
+  --gold2:   #D4A843;
+  --navy:    #1B3A6B;
+  --dark:    #1C1C1E;
+  --mid:     #4A4A55;
+  --light:   #8A8A95;
+  --border:  rgba(13,107,107,0.18);
+  --shadow:  0 4px 32px rgba(28,28,30,0.08);
+  --shadow2: 0 8px 48px rgba(28,28,30,0.14);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; line-height: 1.6; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 68px;
+  background: rgba(255,255,255,0.93); backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(13,107,107,0.12);
+}
+.nav-back {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; color: var(--mid); font-size: 13.5px; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--teal); }
+.nav-logo-mark {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--teal), var(--teal2));
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-weight: 700; font-size: 16px; color: #fff;
+}
+.nav-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--dark); }
+.nav-breadcrumb { font-size: 12px; color: var(--light); margin-top: 1px; }
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.nav-link { font-size: 13px; font-weight: 500; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+.nav-link:hover { color: var(--teal); }
+.nav-cta {
+  background: var(--teal); color: #fff; padding: 8px 20px;
+  border-radius: 6px; font-size: 13px; font-weight: 600;
+  text-decoration: none; transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--teal2); }
+
+/* HERO */
+#hero {
+  min-height: 80vh;
+  background: linear-gradient(160deg, #0A4A4A 0%, #072E2E 50%, #0A3D3A 100%);
+  display: flex; align-items: flex-end;
+  padding: 120px 48px 72px; position: relative; overflow: hidden;
+}
+.hero-glow {
+  position: absolute; border-radius: 50%; pointer-events: none;
+}
+.hero-glow-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(45,212,191,0.15), transparent 70%);
+  top: -100px; right: -80px;
+}
+.hero-glow-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(184,134,11,0.12), transparent 70%);
+  bottom: -80px; left: 80px;
+}
+.hero-inner { max-width: 1140px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 600; color: var(--teal3);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  border: 1px solid rgba(45,212,191,0.3); border-radius: 20px;
+  padding: 5px 14px; margin-bottom: 24px;
+  background: rgba(45,212,191,0.08);
+}
+.hero-eyebrow::before { content: '🏠'; }
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 5.5vw, 68px); font-weight: 700;
+  color: #fff; line-height: 1.1; margin-bottom: 20px; max-width: 700px;
+}
+.hero-title em { font-style: italic; color: var(--teal3); }
+
+.hero-sub {
+  font-size: 18px; color: rgba(255,255,255,0.65);
+  max-width: 540px; line-height: 1.7; margin-bottom: 40px;
+}
+
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-teal {
+  background: linear-gradient(135deg, var(--teal), var(--teal2));
+  color: #fff; padding: 13px 28px; border-radius: 8px;
+  font-size: 14.5px; font-weight: 600; text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(13,107,107,0.4);
+}
+.btn-teal:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(13,107,107,0.5); }
+.btn-ghost {
+  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85);
+  border: 1.5px solid rgba(255,255,255,0.2); border-radius: 8px;
+  padding: 12px 24px; font-size: 14.5px; font-weight: 500;
+  text-decoration: none; transition: background 0.2s, border-color 0.2s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.4); }
+
+/* STATS BAR */
+.stats-bar {
+  background: linear-gradient(90deg, #F0FAFA, #EAF5F5);
+  border-bottom: 1px solid rgba(13,107,107,0.12);
+  padding: 32px 48px;
+}
+.stats-inner {
+  max-width: 1140px; margin: 0 auto;
+  display: flex; align-items: center; gap: 0; justify-content: space-around; flex-wrap: wrap;
+}
+.stat { text-align: center; padding: 8px 32px; }
+.stat + .stat { border-left: 1px solid rgba(13,107,107,0.15); }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; color: var(--teal); line-height: 1; }
+.stat-lbl { font-size: 11px; color: var(--light); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
+
+/* SHARED */
+.section { padding: 90px 48px; }
+.container { max-width: 1140px; margin: 0 auto; }
+.section-label { font-size: 11px; font-weight: 600; color: var(--teal); letter-spacing: 0.18em; text-transform: uppercase; display: block; margin-bottom: 12px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 700; color: var(--dark); line-height: 1.15; }
+.section-sub { font-size: 16.5px; color: var(--mid); line-height: 1.7; margin-top: 14px; max-width: 580px; }
+
+/* RESOURCE */
+#resource { background: linear-gradient(180deg, #F0FAFA 0%, var(--cream) 100%); }
+.resource-header { text-align: center; margin-bottom: 56px; }
+.resource-header .section-sub { margin: 14px auto 0; }
+
+.resource-showcase {
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: 48px; align-items: center;
+}
+.resource-info {}
+.resource-tag-list {
+  display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 28px;
+}
+.r-tag {
+  font-size: 11px; font-weight: 500; color: var(--teal);
+  background: rgba(13,107,107,0.08); border: 1px solid rgba(13,107,107,0.2);
+  padding: 4px 12px; border-radius: 12px; letter-spacing: 0.04em;
+}
+.resource-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--teal); color: #fff;
+  padding: 14px 28px; border-radius: 8px;
+  font-size: 15px; font-weight: 600; text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 20px rgba(13,107,107,0.3);
+}
+.resource-btn:hover { background: var(--teal2); transform: translateY(-2px); }
+
+.resource-card-visual {
+  background: linear-gradient(145deg, #072E2E, #0A4A4A);
+  border-radius: 20px; padding: 40px;
+  position: relative; overflow: hidden;
+}
+.resource-card-visual::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(45,212,191,0.15), transparent);
+  border-radius: 50%;
+}
+.rcv-icon { font-size: 52px; margin-bottom: 20px; display: block; position: relative; z-index: 1; }
+.rcv-title {
+  font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700;
+  color: #fff; margin-bottom: 10px; position: relative; z-index: 1;
+}
+.rcv-sub { font-size: 13.5px; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 24px; position: relative; z-index: 1; }
+.rcv-chapters {
+  display: flex; flex-direction: column; gap: 10px;
+  position: relative; z-index: 1;
+}
+.rcv-chapter {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; border-radius: 10px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+  font-size: 13px; color: rgba(255,255,255,0.75);
+}
+.rcv-chapter-icon { font-size: 16px; }
+
+/* SERVICES */
+#services { background: var(--white); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 56px;
+}
+.svc-card {
+  background: var(--cream); border-radius: 16px; padding: 30px;
+  border: 1px solid var(--sand); transition: border-color 0.25s, transform 0.25s;
+}
+.svc-card:hover { border-color: var(--border); transform: translateY(-4px); }
+.svc-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+.svc-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+.svc-text { font-size: 13.5px; color: var(--mid); line-height: 1.6; }
+
+/* COMPLIANCE CHECKLIST */
+#compliance { background: var(--cream); }
+.compliance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 56px; }
+.checklist {}
+.checklist-title { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.checklist-title span { font-size: 20px; }
+.check-items { display: flex; flex-direction: column; gap: 10px; }
+.check-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; background: var(--white); border-radius: 10px;
+  border: 1px solid var(--sand); font-size: 13.5px; color: var(--mid);
+}
+.check-dot {
+  width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700;
+}
+.check-dot.green { background: rgba(74,222,128,0.15); color: #16a34a; border: 1px solid rgba(74,222,128,0.3); }
+.check-dot.teal { background: rgba(13,107,107,0.1); color: var(--teal); border: 1px solid rgba(13,107,107,0.2); }
+
+/* PROCESS */
+#process { background: var(--white); }
+.process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px; margin-top: 56px;
+}
+.step-card {
+  background: var(--cream); border-radius: 16px;
+  padding: 28px 22px; border: 1px solid var(--sand);
+  text-align: center;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.step-card:hover { border-color: var(--border); transform: translateY(-4px); }
+.step-num {
+  width: 44px; height: 44px; margin: 0 auto 16px;
+  background: linear-gradient(135deg, var(--teal), var(--teal2));
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #fff;
+}
+.step-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+.step-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+.step-text { font-size: 13px; color: var(--mid); line-height: 1.6; }
+
+/* CTA */
+#cta {
+  background: linear-gradient(135deg, #072E2E 0%, #0A4A4A 100%);
+  padding: 80px 48px; text-align: center; position: relative; overflow: hidden;
+}
+#cta::before {
+  content: '';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(45,212,191,0.08), transparent 60%);
+  border-radius: 50%; pointer-events: none;
+}
+.cta-title { font-family: 'Playfair Display', serif; font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; color: #fff; margin-bottom: 14px; position: relative; z-index: 1; }
+.cta-sub { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto 36px; line-height: 1.6; position: relative; z-index: 1; }
+.cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; position: relative; z-index: 1; }
+
+/* FOOTER */
+footer {
+  background: var(--dark); padding: 40px 48px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.35); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--teal3); }
+
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  #hero { padding: 110px 24px 56px; }
+  .section { padding: 70px 24px; }
+  .resource-showcase { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .compliance-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .stats-bar { padding: 24px; }
+  .stat + .stat { border-left: none; border-top: 1px solid rgba(13,107,107,0.12); }
+  .stats-inner { flex-direction: column; gap: 16px; }
+  footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; flex-wrap: wrap; }
+}
+@media (max-width: 540px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-back">
+    <div class="nav-logo-mark">A</div>
+    <div>
+      <div class="nav-title">ARAYA Consulting</div>
+      <div class="nav-breadcrumb">← Back to Main</div>
+    </div>
+  </a>
+  <div class="nav-right">
+    <a href="#resource" class="nav-link">Resources</a>
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#compliance" class="nav-link">Compliance</a>
+    <a href="mailto:arayaconsultingllc@gmail.com" class="nav-cta">Contact Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">ARAYA Consulting Division</div>
+    <h1 class="hero-title">
+      Home Health Agency<br/><em>Built Right</em> in California
+    </h1>
+    <p class="hero-sub">
+      From CDPH licensure to Medicare CoP compliance, OASIS accuracy to QAPI programs — ARAYA Consulting builds home health agencies that deliver clinical excellence and sustainable growth.
+    </p>
+    <div class="hero-actions">
+      <a href="#resource" class="btn-teal">Explore Resources</a>
+      <a href="mailto:arayaconsultingllc@gmail.com" class="btn-ghost">Start a Consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-num">CDPH</div><div class="stat-lbl">Licensed Compliant</div></div>
+    <div class="stat"><div class="stat-num">CoPs</div><div class="stat-lbl">Medicare Conditions</div></div>
+    <div class="stat"><div class="stat-num">OASIS</div><div class="stat-lbl">Clinical Documentation</div></div>
+    <div class="stat"><div class="stat-num">QAPI</div><div class="stat-lbl">Quality Programs</div></div>
+    <div class="stat"><div class="stat-num">CA</div><div class="stat-lbl">California Expert</div></div>
+  </div>
+</div>
+
+<!-- RESOURCE -->
+<section class="section" id="resource">
+  <div class="container">
+    <div class="resource-header">
+      <span class="section-label">Home Health Knowledge Hub</span>
+      <h2 class="section-title">The CAHHA Operational Bible</h2>
+      <p class="section-sub">
+        The California Home Health Agency guide built by ARAYA — a complete operational roadmap from licensure to clinical excellence.
+      </p>
+    </div>
+
+    <div class="resource-showcase">
+      <div class="resource-info">
+        <p style="font-size:17px; color:var(--mid); line-height:1.7; margin-bottom:20px;">
+          The <strong>CAHHA Guide</strong> is ARAYA Consulting's comprehensive operational bible for California Home Health Agencies — covering every dimension of launching, licensing, and running a compliant, high-quality home health operation.
+        </p>
+        <p style="font-size:15px; color:var(--mid); line-height:1.7; margin-bottom:28px;">
+          From CDPH licensure and Medicare Conditions of Participation to OASIS documentation, outcome metrics, staffing models, and survey readiness — this is the field manual your agency needs.
+        </p>
+        <div class="resource-tag-list">
+          <span class="r-tag">CDPH Licensure</span>
+          <span class="r-tag">Medicare CoPs</span>
+          <span class="r-tag">OASIS Accuracy</span>
+          <span class="r-tag">Clinical Documentation</span>
+          <span class="r-tag">Staffing & QA</span>
+          <span class="r-tag">QAPI Systems</span>
+          <span class="r-tag">Survey Readiness</span>
+          <span class="r-tag">Outcome Metrics</span>
+        </div>
+        <a href="home-health-guide.html" class="resource-btn">
+          Open CAHHA Guide →
+        </a>
+      </div>
+
+      <div class="resource-card-visual">
+        <span class="rcv-icon">📋</span>
+        <div class="rcv-title">CAHHA — California Home Health Agency Operational Bible</div>
+        <div class="rcv-sub">Your complete field manual for California home health agency operations and compliance.</div>
+        <div class="rcv-chapters">
+          <div class="rcv-chapter"><span class="rcv-chapter-icon">⚖️</span> CDPH Licensing & Pre-Application</div>
+          <div class="rcv-chapter"><span class="rcv-chapter-icon">📄</span> Medicare Conditions of Participation</div>
+          <div class="rcv-chapter"><span class="rcv-chapter-icon">🩺</span> OASIS & Clinical Documentation</div>
+          <div class="rcv-chapter"><span class="rcv-chapter-icon">👥</span> Staffing Models & HR Compliance</div>
+          <div class="rcv-chapter"><span class="rcv-chapter-icon">📊</span> QAPI & Quality Improvement</div>
+          <div class="rcv-chapter"><span class="rcv-chapter-icon">🔍</span> Survey Readiness & Deficiency Response</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <span class="section-label">What We Do</span>
+    <h2 class="section-title">Full-Spectrum Home Health Consulting</h2>
+    <p class="section-sub">
+      Every service you need to build a home health agency that passes surveys, serves patients with excellence, and grows sustainably in the California market.
+    </p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <span class="svc-icon">📜</span>
+        <div class="svc-title">CDPH Licensure</div>
+        <p class="svc-text">Complete application guidance, pre-licensing assessment, and documentation preparation for California home health licensure through CDPH.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">🏥</span>
+        <div class="svc-title">Medicare CoP Compliance</div>
+        <p class="svc-text">CMS Conditions of Participation audit, policy development, and certification preparation — built to withstand any survey.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">📊</span>
+        <div class="svc-title">OASIS Accuracy</div>
+        <p class="svc-text">OASIS documentation review, clinician training, and accuracy protocols to optimize outcomes and reimbursement rates.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">🔍</span>
+        <div class="svc-title">Survey Readiness</div>
+        <p class="svc-text">Mock surveys, deficiency gap analysis, and corrective action planning to keep your agency survey-ready 365 days a year.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">📈</span>
+        <div class="svc-title">QAPI Program Design</div>
+        <p class="svc-text">Quality Assurance and Performance Improvement programs that meet CMS requirements and drive genuine clinical improvement.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">👥</span>
+        <div class="svc-title">Staffing & HR Systems</div>
+        <p class="svc-text">Staffing models, clinician competency frameworks, HR compliance, and workflow systems built for California home health agencies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="section" id="compliance">
+  <div class="container">
+    <span class="section-label">Compliance Framework</span>
+    <h2 class="section-title">What We Keep You Compliant With</h2>
+    <p class="section-sub">ARAYA ensures your home health agency meets every standard — from state licensure to federal certification and clinical quality benchmarks.</p>
+    <div class="compliance-grid">
+      <div class="checklist">
+        <div class="checklist-title"><span>⚖️</span> California State Requirements</div>
+        <div class="check-items">
+          <div class="check-item"><div class="check-dot teal">✓</div>CDPH Home Health Agency License</div>
+          <div class="check-item"><div class="check-dot teal">✓</div>Title 22 California Code of Regulations</div>
+          <div class="check-item"><div class="check-dot teal">✓</div>California Labor Law & HR Compliance</div>
+          <div class="check-item"><div class="check-dot teal">✓</div>OSHPD Reporting Requirements</div>
+          <div class="check-item"><div class="check-dot teal">✓</div>State Emergency Preparedness Plans</div>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="checklist-title"><span>🏥</span> Federal & Clinical Standards</div>
+        <div class="check-items">
+          <div class="check-item"><div class="check-dot green">✓</div>CMS Conditions of Participation (CoPs)</div>
+          <div class="check-item"><div class="check-dot green">✓</div>Medicare Home Health Benefit Coverage</div>
+          <div class="check-item"><div class="check-dot green">✓</div>OASIS-E Assessment Accuracy</div>
+          <div class="check-item"><div class="check-dot green">✓</div>QAPI Program Requirements</div>
+          <div class="check-item"><div class="check-dot green">✓</div>Home Health Compare Star Ratings</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section" id="process">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 0;">
+      <span class="section-label">How We Work</span>
+      <h2 class="section-title">Our Home Health Consulting Process</h2>
+      <p class="section-sub" style="margin: 14px auto 0;">From your first call to a fully operational home health agency — ARAYA walks every step with you.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step-card">
+        <span class="step-icon">🔍</span>
+        <div class="step-num">1</div>
+        <div class="step-title">Discovery</div>
+        <p class="step-text">We assess your goals, market, existing systems, and regulatory gaps to design a tailored consulting plan.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-icon">📜</span>
+        <div class="step-num">2</div>
+        <div class="step-title">Licensure & Setup</div>
+        <p class="step-text">CDPH license application, business structure, policy development, and Medicare enrollment preparation.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-icon">⚙️</span>
+        <div class="step-num">3</div>
+        <div class="step-title">Operations Build</div>
+        <p class="step-text">Clinical protocols, OASIS workflows, staffing frameworks, QAPI programs, and intake systems — built with your team.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-icon">🚀</span>
+        <div class="step-num">4</div>
+        <div class="step-title">Launch & Grow</div>
+        <p class="step-text">Mock surveys, go-live support, ongoing compliance monitoring, and performance optimization as you scale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <h2 class="cta-title">Ready to Launch Your Home Health Agency?</h2>
+    <p class="cta-sub">Partner with ARAYA Consulting to build a home health agency that's compliant, clinical, and built to last.</p>
+    <div class="cta-actions">
+      <a href="mailto:arayaconsultingllc@gmail.com" class="btn-teal">Contact ARAYA Today</a>
+      <a href="index.html" class="btn-ghost">Back to Main Site</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2025 ARAYA Consulting LLC — Home Health Agency Division</span>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="home-health-guide.html">CAHHA Guide</a>
+    <a href="hospice-agency.html">Hospice Division</a>
+    <a href="mailto:arayaconsultingllc@gmail.com">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,2718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The California Hospice Startup Bible</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy: #1B3A6B;
+  --navy-dark: #0f2347;
+  --teal: #1A6B5A;
+  --teal-light: #22896f;
+  --gold: #C9960C;
+  --gold-light: #f0b429;
+  --cream: #F8F5EE;
+  --cream-dark: #EDE9DF;
+  --dark: #1a1a1a;
+  --gray: #6B7280;
+  --light-gray: #f3f4f6;
+  --red: #8B0000;
+  --red-light: #fff0f0;
+  --sidebar-w: 300px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── SIDEBAR ─────────────────────────────────────────────── */
+#sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--navy-dark);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(.77,0,.18,1);
+}
+
+.sidebar-header {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+
+.sidebar-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.sidebar-sub {
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sidebar-search {
+  padding: 16px 20px;
+  flex-shrink: 0;
+}
+
+.sidebar-search input {
+  width: 100%;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 9px 14px;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sidebar-search input::placeholder { color: rgba(255,255,255,0.3); }
+.sidebar-search input:focus { border-color: var(--gold); }
+
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0 24px;
+}
+
+.sidebar-nav::-webkit-scrollbar { width: 3px; }
+.sidebar-nav::-webkit-scrollbar-track { background: transparent; }
+.sidebar-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+.nav-section-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  padding: 16px 24px 6px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: all 0.18s;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+
+.nav-item:hover { background: rgba(255,255,255,0.05); }
+
+.nav-item.active {
+  background: rgba(201,150,12,0.12);
+  border-left-color: var(--gold);
+}
+
+.nav-item .nav-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  min-width: 24px;
+  font-weight: 500;
+}
+
+.nav-item .nav-label {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.35;
+  transition: color 0.18s;
+}
+
+.nav-item.active .nav-label { color: #fff; font-weight: 500; }
+.nav-item:hover .nav-label { color: rgba(255,255,255,0.95); }
+
+.nav-progress {
+  margin-left: auto;
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  font-family: 'DM Mono', monospace;
+  white-space: nowrap;
+}
+
+.nav-item.has-checks .nav-progress { display: block; }
+
+/* ─── MAIN CONTENT ────────────────────────────────────────── */
+#main {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+}
+
+/* ─── HERO ─────────────────────────────────────────────────── */
+#hero {
+  background: var(--navy);
+  position: relative;
+  padding: 80px 72px 72px;
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -80px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(201,150,12,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+#hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold) 0%, transparent 60%);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,150,12,0.15);
+  border: 1px solid rgba(201,150,12,0.3);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 28px;
+  width: fit-content;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.05;
+  margin-bottom: 12px;
+}
+
+.hero-title span { color: var(--gold-light); }
+
+.hero-subtitle {
+  font-size: 15px;
+  color: rgba(255,255,255,0.55);
+  max-width: 520px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 48px;
+}
+
+.stat-item { display: flex; flex-direction: column; gap: 4px; }
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stat-divider {
+  width: 1px;
+  background: rgba(255,255,255,0.1);
+  align-self: stretch;
+}
+
+/* ─── PROGRESS BAR ────────────────────────────────────────── */
+#progress-bar-wrap {
+  background: var(--navy-dark);
+  padding: 20px 72px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.progress-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.progress-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  border-radius: 2px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+
+.progress-pct {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--gold-light);
+  font-weight: 500;
+  min-width: 40px;
+  text-align: right;
+}
+
+/* ─── CONTENT AREA ────────────────────────────────────────── */
+#content-area {
+  padding: 56px 72px 100px;
+  max-width: 900px;
+}
+
+/* ─── PART SECTION ────────────────────────────────────────── */
+.part-section {
+  margin-bottom: 80px;
+  animation: fadeUp 0.4s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.part-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 2px solid var(--cream-dark);
+  position: relative;
+}
+
+.part-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 80px; height: 2px;
+  background: var(--gold);
+}
+
+.part-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--gold);
+  background: rgba(201,150,12,0.1);
+  border: 1px solid rgba(201,150,12,0.25);
+  border-radius: 6px;
+  padding: 6px 12px;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.part-title-wrap { flex: 1; }
+
+.part-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.part-description {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* ─── SUB-SECTION ─────────────────────────────────────────── */
+.sub-section { margin-bottom: 40px; }
+
+.sub-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--cream-dark);
+}
+
+.sub-title-sm {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 20px 0 12px;
+}
+
+.body-text {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: #374151;
+  margin-bottom: 14px;
+}
+
+/* ─── BULLET LIST ─────────────────────────────────────────── */
+.bullet-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.bullet-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.bullet-list li::before {
+  content: '›';
+  color: var(--teal);
+  font-size: 18px;
+  font-weight: 700;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+/* ─── CHECKLIST ────────────────────────────────────────────── */
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border: 1px solid transparent;
+}
+
+.check-item:hover { background: rgba(26,107,90,0.04); border-color: rgba(26,107,90,0.1); }
+
+.check-item.done { background: rgba(26,107,90,0.06); border-color: rgba(26,107,90,0.15); }
+
+.check-box {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #CBD5E1;
+  border-radius: 5px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  margin-top: 1px;
+  background: #fff;
+}
+
+.check-item.done .check-box {
+  background: var(--teal);
+  border-color: var(--teal);
+}
+
+.check-box svg {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.2s;
+}
+
+.check-item.done .check-box svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.check-text {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #374151;
+  transition: all 0.2s;
+}
+
+.check-item.done .check-text {
+  color: #9CA3AF;
+  text-decoration: line-through;
+  text-decoration-color: var(--teal);
+}
+
+/* ─── ALERT BOX ───────────────────────────────────────────── */
+.alert-box {
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin: 20px 0;
+  border-left: 4px solid;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.alert-box.navy { background: #EEF2FA; border-color: var(--navy); }
+.alert-box.gold { background: #FFFBF0; border-color: var(--gold); }
+.alert-box.red  { background: #FFF0F0; border-color: var(--red); }
+.alert-box.teal { background: #EEF8F5; border-color: var(--teal); }
+
+.alert-icon { font-size: 20px; flex-shrink: 0; }
+
+.alert-content {}
+
+.alert-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.alert-box.navy .alert-title { color: var(--navy); }
+.alert-box.gold .alert-title { color: var(--gold); }
+.alert-box.red  .alert-title { color: var(--red); }
+.alert-box.teal .alert-title { color: var(--teal); }
+
+.alert-text { font-size: 13.5px; line-height: 1.6; color: #374151; }
+
+/* ─── DATA TABLE ──────────────────────────────────────────── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  font-size: 13.5px;
+}
+
+.data-table thead tr { background: var(--navy); }
+.data-table thead th {
+  padding: 13px 16px;
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.data-table tbody tr { border-bottom: 1px solid var(--cream-dark); }
+.data-table tbody tr:last-child { border-bottom: none; }
+.data-table tbody tr:nth-child(odd) { background: #fff; }
+.data-table tbody tr:nth-child(even) { background: #FAFAF8; }
+
+.data-table tbody td {
+  padding: 12px 16px;
+  color: #374151;
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.data-table .highlight { font-weight: 600; color: var(--navy); }
+
+/* ─── SALARY TAG ──────────────────────────────────────────── */
+.salary-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(26,107,90,0.08);
+  border: 1px solid rgba(26,107,90,0.2);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--teal);
+  font-family: 'DM Mono', monospace;
+}
+
+.priority-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.priority-tag.critical { background: #FFF0F0; color: var(--red); }
+.priority-tag.high     { background: rgba(201,150,12,0.1); color: #92680a; }
+.priority-tag.medium   { background: rgba(26,107,90,0.08); color: var(--teal); }
+
+/* ─── TIMELINE ────────────────────────────────────────────── */
+.timeline { position: relative; padding-left: 28px; }
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 9px; top: 6px; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--teal), var(--navy));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -23px; top: 6px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: 2px solid var(--cream);
+  box-shadow: 0 0 0 2px var(--teal);
+}
+
+.timeline-phase {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.timeline-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+/* ─── SECTION DIVIDER ─────────────────────────────────────── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 32px 0 24px;
+}
+
+.section-divider::before, .section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--cream-dark);
+}
+
+.section-divider span {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+/* ─── MOBILE TOGGLE ───────────────────────────────────────── */
+#menu-toggle {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 200;
+  background: var(--navy);
+  border: none;
+  border-radius: 10px;
+  width: 44px; height: 44px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+}
+
+#menu-toggle span {
+  display: block;
+  width: 20px; height: 2px;
+  background: #fff;
+  border-radius: 1px;
+  transition: all 0.25s;
+}
+
+/* ─── SCROLLBAR ───────────────────────────────────────────── */
+#main::-webkit-scrollbar { width: 6px; }
+#main::-webkit-scrollbar-track { background: transparent; }
+#main::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+
+/* ─── BACK TO TOP ─────────────────────────────────────────── */
+#btt {
+  position: fixed;
+  bottom: 32px; right: 32px;
+  width: 44px; height: 44px;
+  background: var(--navy);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(27,58,107,0.3);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.25s;
+  z-index: 99;
+}
+
+#btt.show { opacity: 1; transform: translateY(0); }
+#btt:hover { background: var(--teal); }
+
+#btt svg { color: #fff; width: 18px; height: 18px; }
+
+/* ─── CATEGORY HEADER ─────────────────────────────────────── */
+.category-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+  border-radius: 12px;
+  padding: 22px 28px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category-header-left {}
+
+.category-header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.category-header-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+}
+
+.category-progress {
+  text-align: right;
+}
+
+.category-pct {
+  font-family: 'DM Mono', monospace;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--gold-light);
+  line-height: 1;
+}
+
+.category-done-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  :root { --sidebar-w: 280px; }
+  #content-area { padding: 40px 28px 80px; }
+  #hero { padding: 60px 28px 48px; }
+  #progress-bar-wrap { padding: 16px 28px; }
+  .hero-stats { gap: 28px; }
+
+  #menu-toggle { display: flex; }
+
+  #sidebar {
+    transform: translateX(-100%);
+  }
+  #sidebar.open {
+    transform: translateX(0);
+    box-shadow: 8px 0 40px rgba(0,0,0,0.3);
+  }
+  #main { margin-left: 0; }
+}
+
+@media (max-width: 480px) {
+  .hero-stats { flex-wrap: wrap; gap: 16px; }
+  .stat-divider { display: none; }
+  .data-table { font-size: 12px; }
+  .data-table thead th, .data-table tbody td { padding: 10px 10px; }
+}
+
+/* ─── CHIP ────────────────────────────────────────────────── */
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 16px; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid;
+}
+.chip.teal   { background: rgba(26,107,90,0.07); border-color: rgba(26,107,90,0.25); color: var(--teal); }
+.chip.navy   { background: rgba(27,58,107,0.07); border-color: rgba(27,58,107,0.2); color: var(--navy); }
+.chip.gold   { background: rgba(201,150,12,0.08); border-color: rgba(201,150,12,0.25); color: #8a6409; }
+
+/* ─── BOLD PAIR ───────────────────────────────────────────── */
+.bold-pair { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.bold-pair .bp-label { font-weight: 700; color: var(--navy); font-size: 14px; }
+.bold-pair .bp-val   { font-size: 14px; color: #374151; }
+</style>
+</head>
+<body>
+
+<!-- ARAYA HOME BACK BUTTON -->
+<a href="index.html" style="
+  position:fixed; top:14px; right:20px; z-index:9999;
+  display:inline-flex; align-items:center; gap:7px;
+  background:rgba(15,35,71,0.92); backdrop-filter:blur(10px);
+  color:#f0b429; text-decoration:none;
+  font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600;
+  padding:8px 16px; border-radius:20px;
+  border:1px solid rgba(240,180,41,0.3);
+  letter-spacing:0.04em; transition:background 0.2s;
+" onmouseover="this.style.background='rgba(15,35,71,1)'" onmouseout="this.style.background='rgba(15,35,71,0.92)'">
+  ← ARAYA Home
+</a>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">CA Hospice Bible</div>
+    <div class="sidebar-sub">15-Year Veteran's Complete Guide</div>
+    <a href="index.html" style="
+      display:inline-flex; align-items:center; gap:6px; margin-top:10px;
+      color:rgba(240,180,41,0.8); text-decoration:none;
+      font-family:'DM Sans',sans-serif; font-size:11px; font-weight:500;
+      letter-spacing:0.06em; transition:color 0.2s;
+    " onmouseover="this.style.color='#f0b429'" onmouseout="this.style.color='rgba(240,180,41,0.8)'">← ARAYA Main Site</a>
+  </div>
+  <div class="sidebar-search">
+    <input type="text" id="searchInput" placeholder="Search sections..." autocomplete="off"/>
+  </div>
+  <div class="sidebar-nav" id="sidebarNav"></div>
+</nav>
+
+<!-- MOBILE TOGGLE -->
+<button id="menu-toggle" aria-label="Toggle menu">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- MAIN -->
+<div id="main">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-badge">🏥 California Edition · JCAHO + CDPH + Medicare</div>
+    <h1 class="hero-title">The California<br/><span>Hospice Startup</span><br/>Bible</h1>
+    <p class="hero-subtitle">A complete ground-up operational guide. From empty office to first patient and beyond — tailored to California state regulations, CDPH standards, and Medicare Conditions of Participation.</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num" id="totalChecks">0</div>
+        <div class="stat-label">Checklist Items</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num">15</div>
+        <div class="stat-label">Parts / Chapters</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num" id="completedChecks">0</div>
+        <div class="stat-label">Completed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRESS BAR -->
+  <div id="progress-bar-wrap">
+    <div class="progress-label">Overall Progress</div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-pct" id="progressPct">0%</div>
+  </div>
+
+  <!-- CONTENT -->
+  <div id="content-area" id="contentArea"></div>
+
+</div>
+
+<!-- BACK TO TOP -->
+<button id="btt" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script>
+// ════════════════════════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════════════════════════
+const parts = [
+  {
+    id: "p1",
+    num: "PART I",
+    title: "California Regulatory Foundation",
+    description: "CDPH, Medi-Cal, AB5, CURES, Cal/OSHA — the California-specific legal layer you must master before anything else.",
+    content: `
+      <div class="sub-section">
+        <div class="sub-title">1.1 California Department of Public Health (CDPH)</div>
+        <p class="body-text">The CDPH is your primary state licensing authority. All California hospices must maintain a current Hospice License issued by CDPH under California Health and Safety Code Section 1745–1756. JCAHO accreditation satisfies some CDPH survey requirements through deemed status, but CDPH retains independent oversight authority.</p>
+        <div class="sub-title-sm">California Hospice Licensing Requirements</div>
+        <ul class="bullet-list">
+          <li>Active California Hospice License — renewed annually via CDPH SNAP portal</li>
+          <li>Facility fire clearance and physical plant inspection required</li>
+          <li>Administrator of Record must be named on license</li>
+          <li>Medical Director must hold valid, unrestricted California Medical License (verify at Medical Board of California)</li>
+          <li>All licensed clinical staff must hold current California licenses — verify via BreEZe system</li>
+          <li>Annual licensing fee: approximately $3,000–$6,000 depending on census tier</li>
+        </ul>
+        <div class="sub-title-sm">Key California Health & Safety Code Sections</div>
+        <table class="data-table">
+          <thead><tr><th>Code Section</th><th>Subject</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">HSC 1745–1756</td><td>Hospice Licensure Act — your operational state-level bible</td></tr>
+            <tr><td class="highlight">HSC 1280.15</td><td>Background check requirements — more extensive than federal</td></tr>
+            <tr><td class="highlight">HSC 123111</td><td>Patient access to records — 5-day response required</td></tr>
+            <tr><td class="highlight">HSC 1317.6</td><td>Advance Health Care Directive requirements</td></tr>
+            <tr><td class="highlight">WIC 15600–15675</td><td>Elder Abuse and Dependent Adult Civil Protection Act — mandatory reporting</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">1.2 California Employment Laws</div>
+        <div class="alert-box red">
+          <div class="alert-icon">⚠️</div>
+          <div class="alert-content">
+            <div class="alert-title">California is One of the Most Regulated Employment States</div>
+            <div class="alert-text">Federal labor law is the floor — California exceeds it in almost every area. Violations are expensive. Budget for an employment attorney from Day 1. PAGA (Private Attorneys General Act) allows employees to sue on behalf of the state — this is a major litigation risk.</div>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Law / Requirement</th><th>California Standard</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Minimum Wage</td><td>$16/hour statewide (2024)</td><td>LA County: $17.27+</td></tr>
+            <tr><td class="highlight">Meal Breaks</td><td>30-min unpaid if shift &gt; 5 hrs; 2nd break if &gt; 10 hrs</td><td>Mandatory, not waivable</td></tr>
+            <tr><td class="highlight">Rest Breaks</td><td>10-min paid per 4-hour work period</td><td>California-specific</td></tr>
+            <tr><td class="highlight">Daily Overtime</td><td>1.5x after 8 hrs/day; 2x after 12 hrs/day</td><td>Not just weekly — daily OT</td></tr>
+            <tr><td class="highlight">Paid Sick Leave</td><td>Minimum 5 days (40 hours) per year</td><td>Effective 2024</td></tr>
+            <tr><td class="highlight">Non-Compete Agreements</td><td>VOID and unenforceable</td><td>Do not include in contracts</td></tr>
+            <tr><td class="highlight">Final Paycheck</td><td>Immediately upon termination; 72 hrs for resignation</td><td>Major liability if missed</td></tr>
+            <tr><td class="highlight">Pay Stub Requirements</td><td>9 specific mandatory items required</td><td>Audit your payroll system</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">1.3 California Medi-Cal Hospice Benefit</div>
+        <p class="body-text">The Medi-Cal hospice benefit mirrors Medicare but requires separate enrollment through DHCS (Department of Health Care Services). Many California hospice patients are dual-eligible — this requires billing coordination expertise.</p>
+        <ul class="bullet-list">
+          <li>Medi-Cal enrollment can take 60–120 days — start immediately</li>
+          <li>Enroll via DHCS Provider Enrollment Division</li>
+          <li>Many California patients are dual-eligible (Medicare + Medi-Cal)</li>
+          <li>Medi-Cal managed care plans in California (L.A. Care, Health Net) may require separate contracting</li>
+          <li>Medi-Cal claims must be submitted within 12 months of date of service</li>
+        </ul>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">1.4 Additional California-Specific Requirements</div>
+        <ul class="bullet-list">
+          <li><strong>POLST:</strong> California-specific bright pink form — use California POLST, not generic versions</li>
+          <li><strong>AHCD:</strong> California Advance Health Care Directive — specific execution and witness requirements</li>
+          <li><strong>CMIA:</strong> California Confidentiality of Medical Information Act — more protective than HIPAA in some areas, especially mental health, substance abuse, HIV/AIDS records</li>
+          <li><strong>CURES:</strong> Controlled Substance Utilization Review and Evaluation System — all controlled substance prescribers must be registered</li>
+          <li><strong>Cal/OSHA ATD Standard:</strong> Aerosol Transmissible Diseases standard (§5199) — more stringent than federal OSHA; requires a written ATD Exposure Control Plan</li>
+          <li><strong>Cultural & Linguistic Competency:</strong> California law requires healthcare organizations serving diverse populations to provide culturally competent care and language access services</li>
+        </ul>
+      </div>
+    `
+  },
+  {
+    id: "p2",
+    num: "PART II",
+    title: "Current Position Assessment",
+    description: "What you have, what you need, and prioritized gap analysis before you build anything.",
+    content: `
+      <div class="sub-section">
+        <div class="sub-title">2.1 What You Have Right Now</div>
+        <table class="data-table">
+          <thead><tr><th>Asset</th><th>Status</th><th>Action Needed</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Physical Office Space</td><td>✅ Confirmed</td><td>Full setup — see Part III</td></tr>
+            <tr><td class="highlight">JCAHO Accreditation</td><td>✅ Confirmed</td><td>Maintain continuous compliance</td></tr>
+            <tr><td class="highlight">Medicare Certification</td><td>⚠️ Verify Active</td><td>Confirm CMS Provider Number active in PECOS</td></tr>
+            <tr><td class="highlight">CDPH Hospice License</td><td>⚠️ Verify Current</td><td>Confirm renewal date; add new Administrator/DON to license</td></tr>
+            <tr><td class="highlight">Medi-Cal Provider Enrollment</td><td>❌ Apply Now</td><td>Submit DHCS application immediately — 60–120 day wait</td></tr>
+            <tr><td class="highlight">NPI Number (Organization)</td><td>⚠️ Verify</td><td>Confirm active at NPPES.cms.hhs.gov</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">2.2 Master Gap List — Prioritized</div>
+        <table class="data-table">
+          <thead><tr><th>Requirement</th><th>Priority</th><th>Timeline</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Medical Director (CA licensed)</td><td><span class="priority-tag critical">CRITICAL</span></td><td>Weeks 1–2</td></tr>
+            <tr><td class="highlight">Clinical Director / DON</td><td><span class="priority-tag critical">CRITICAL</span></td><td>Weeks 1–3</td></tr>
+            <tr><td class="highlight">HR Infrastructure / PEO</td><td><span class="priority-tag high">HIGH</span></td><td>Week 1</td></tr>
+            <tr><td class="highlight">EMR / EHR System</td><td><span class="priority-tag high">HIGH</span></td><td>Weeks 1–6</td></tr>
+            <tr><td class="highlight">Full Office Setup</td><td><span class="priority-tag high">HIGH</span></td><td>Weeks 1–3</td></tr>
+            <tr><td class="highlight">RN Case Managers (2 minimum)</td><td><span class="priority-tag high">HIGH</span></td><td>Weeks 2–4</td></tr>
+            <tr><td class="highlight">Social Worker (MSW, CA licensed)</td><td><span class="priority-tag high">HIGH</span></td><td>Weeks 2–4</td></tr>
+            <tr><td class="highlight">Chaplain / Spiritual Care</td><td><span class="priority-tag high">HIGH</span></td><td>Weeks 3–5</td></tr>
+            <tr><td class="highlight">Pharmacy Partner (24/7)</td><td><span class="priority-tag critical">CRITICAL</span></td><td>Week 2</td></tr>
+            <tr><td class="highlight">DME Vendor Contract</td><td><span class="priority-tag critical">CRITICAL</span></td><td>Week 2</td></tr>
+            <tr><td class="highlight">P&P Manual (complete)</td><td><span class="priority-tag critical">CRITICAL</span></td><td>Weeks 2–6</td></tr>
+            <tr><td class="highlight">Inpatient Facility Contracts</td><td><span class="priority-tag high">HIGH</span></td><td>Weeks 3–6</td></tr>
+            <tr><td class="highlight">Billing / RCM Setup</td><td><span class="priority-tag high">HIGH</span></td><td>Weeks 2–5</td></tr>
+            <tr><td class="highlight">Marketing / Community Liaison</td><td><span class="priority-tag medium">MEDIUM</span></td><td>Weeks 4–8</td></tr>
+            <tr><td class="highlight">Volunteer Program</td><td><span class="priority-tag medium">Required by CMS</span></td><td>Weeks 6–10</td></tr>
+            <tr><td class="highlight">Bereavement Program</td><td><span class="priority-tag medium">Required by CMS</span></td><td>Weeks 4–8</td></tr>
+          </tbody>
+        </table>
+      </div>
+    `
+  },
+  {
+    id: "p3",
+    num: "PART III",
+    title: "Office Setup — Physical Infrastructure",
+    description: "Every piece of furniture, technology, and safety requirement — nothing left out.",
+    content: `
+      <div class="sub-section">
+        <div class="sub-title">3.1 Space Requirements</div>
+        <ul class="bullet-list">
+          <li>Minimum 1,000–2,000 sq ft for startup operation</li>
+          <li>California ADA compliance mandatory — accessible entrance, restrooms, workstations</li>
+          <li>Private counseling area for patient/family meetings (HIPAA)</li>
+          <li>Separate, locked medical records room</li>
+          <li>Conference room seating minimum 10 people (IDG meetings)</li>
+          <li>IT closet/server room — lockable</li>
+          <li>Break room with separate clinical refrigerator</li>
+        </ul>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">3.2 Furniture — Complete Room-by-Room List</div>
+
+        <div class="sub-title-sm">Reception & Common Areas</div>
+        <ul class="bullet-list">
+          <li>Reception desk with HIPAA privacy panel</li>
+          <li>Waiting area chairs (4–6), end tables, task lighting</li>
+          <li>ADA-compliant restroom stocked and maintained</li>
+          <li>Exterior and suite signage with logo</li>
+          <li>Wall-mounted whiteboard or digital display</li>
+        </ul>
+
+        <div class="sub-title-sm">Executive & Clinical Director Offices</div>
+        <ul class="bullet-list">
+          <li>L-shape executive desk with lockable drawers (per office)</li>
+          <li>High-back ergonomic chairs; guest chairs (2 per office)</li>
+          <li>4-drawer lateral lockable filing cabinet (Admin); 2-drawer (Clinical Director)</li>
+          <li>Clinical reference library shelf: pharmacopeia, regulatory manuals, P&P binders</li>
+          <li>Personal whiteboard for census tracking</li>
+        </ul>
+
+        <div class="sub-title-sm">Staff Workstations</div>
+        <ul class="bullet-list">
+          <li>Adjustable sit-stand desk (California ergonomics compliance)</li>
+          <li>Ergonomic chair with lumbar support per station</li>
+          <li>Dual monitors with privacy screens (HIPAA visual protection)</li>
+          <li>Docking station, keyboard, mouse</li>
+          <li>Under-desk lockable pedestal cabinet</li>
+        </ul>
+
+        <div class="sub-title-sm">Conference / IDG Meeting Room</div>
+        <ul class="bullet-list">
+          <li>Conference table — seats 10+ people minimum</li>
+          <li>Padded conference chairs (10 minimum)</li>
+          <li>Large wall-mounted whiteboard or glass board</li>
+          <li>Large clock — IDG meetings are timed and documented</li>
+          <li>TV/monitor for EMR screen sharing during IDG</li>
+          <li>Conference speakerphone for remote participants</li>
+          <li>HDMI cable + wireless screen-share device</li>
+        </ul>
+
+        <div class="sub-title-sm">Medical Records Room</div>
+        <ul class="bullet-list">
+          <li>4–6 drawer lateral filing cabinets (lockable) — organized by patient name/MRN</li>
+          <li>HIPAA-compliant cross-cut shredder — high volume</li>
+          <li>Self-closing door with keypad or key lock</li>
+          <li>Temperature control — California heat can damage records</li>
+        </ul>
+
+        <div class="sub-title-sm">Supply & Storage Room</div>
+        <ul class="bullet-list">
+          <li>Heavy-duty metal shelving units</li>
+          <li>30-day PPE supply minimum: gloves, masks, gowns, face shields</li>
+          <li>Nursing supply kits: syringes, alcohol swabs, dressings, wound care</li>
+          <li>Office supplies: paper, pens, binders, labels</li>
+          <li>Locked narcotics cabinet (if controlled substances stored on-site)</li>
+        </ul>
+
+        <div class="sub-title-sm">Break Room</div>
+        <ul class="bullet-list">
+          <li>Full-size refrigerator (staff lunches) + separate locked clinical refrigerator (labeled)</li>
+          <li>Microwave, coffee maker, table and chairs (4–6)</li>
+          <li>First Aid kit — Cal/OSHA ANSI Z308.1-2021 compliant</li>
+          <li>AED (Automated External Defibrillator) — mounted, staff trained</li>
+          <li>Secure locker/cubby for personal belongings</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">3.3 Technology & IT Infrastructure</div>
+        <div class="alert-box navy">
+          <div class="alert-icon">🔐</div>
+          <div class="alert-content">
+            <div class="alert-title">HIPAA + California CMIA Compliance Required</div>
+            <div class="alert-text">All IT infrastructure must comply with both the HIPAA Security Rule and California's Confidentiality of Medical Information Act. California CMIA adds additional protections, especially around mental health, substance abuse, and HIV/AIDS records.</div>
+          </div>
+        </div>
+
+        <div class="sub-title-sm">Network & Connectivity</div>
+        <ul class="bullet-list">
+          <li>Business-grade fiber internet: minimum 100 Mbps symmetrical</li>
+          <li>Enterprise router (Cisco Meraki, Ubiquiti) — NOT a consumer router</li>
+          <li>Hardware firewall with active threat monitoring</li>
+          <li>Separate secured WiFi networks: Staff and Guest (isolated)</li>
+          <li>VPN for all remote staff accessing EMR</li>
+          <li>UPS (Uninterruptible Power Supply) on server/network equipment</li>
+        </ul>
+
+        <div class="sub-title-sm">Devices</div>
+        <ul class="bullet-list">
+          <li>Desktops: 1 per admin workstation (confirm EMR compatibility)</li>
+          <li>Laptops: Administrator and Clinical Director</li>
+          <li>Tablets (iPads): 1 per field RN — mobile EMR at patient bedside</li>
+          <li>Smartphones with mobile EMR app for all field clinical staff</li>
+          <li>MDM software on all devices: Jamf (Apple), Microsoft Intune</li>
+        </ul>
+
+        <div class="sub-title-sm">Phone System</div>
+        <ul class="bullet-list">
+          <li>Business VoIP: RingCentral, 8x8, or similar</li>
+          <li>After-hours routing to on-call RN — Medicare requires 24/7 RN access</li>
+          <li>Call recording (disclose per California 2-party consent law)</li>
+          <li>Dedicated intake line with professional greeting</li>
+        </ul>
+
+        <div class="sub-title-sm">Software Stack</div>
+        <table class="data-table">
+          <thead><tr><th>Category</th><th>Recommendation</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">EMR</td><td>Axxess, WellSky, Brightree, Netsmart</td><td><span class="priority-tag critical">CRITICAL</span></td></tr>
+            <tr><td class="highlight">Email / Collaboration</td><td>Microsoft 365 or Google Workspace (HIPAA BAA required)</td><td><span class="priority-tag critical">CRITICAL</span></td></tr>
+            <tr><td class="highlight">Secure Messaging</td><td>TigerConnect, Klara — NO personal SMS for PHI</td><td><span class="priority-tag critical">CRITICAL</span></td></tr>
+            <tr><td class="highlight">Password Manager</td><td>1Password, Bitwarden Teams</td><td><span class="priority-tag high">HIGH</span></td></tr>
+            <tr><td class="highlight">Endpoint Protection</td><td>CrowdStrike, SentinelOne</td><td><span class="priority-tag high">HIGH</span></td></tr>
+            <tr><td class="highlight">Payroll / HR</td><td>ADP, Paychex Flex</td><td><span class="priority-tag high">HIGH</span></td></tr>
+            <tr><td class="highlight">Electronic Fax</td><td>eFax, Concord — HIPAA compliant</td><td><span class="priority-tag medium">MEDIUM</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">3.4 Cal/OSHA Compliance — Office</div>
+        <ul class="bullet-list">
+          <li>Cal/OSHA poster posted in workplace (mandatory Day 1 of operations)</li>
+          <li>Written IIPP (Injury & Illness Prevention Program) — required before first hire</li>
+          <li>Emergency exit routes posted and unobstructed</li>
+          <li>Fire extinguisher inspected, tagged, and mounted</li>
+          <li>Smoke and carbon monoxide detectors tested</li>
+          <li>Ergonomics training + workstation assessment (California repetitive motion injury standards)</li>
+          <li>Workplace Violence Prevention Plan (WVPP) — California SB 553, effective 2024</li>
+          <li>Temperature maintained 68–76°F (California office standard)</li>
+          <li>Sharps disposal container if clinical supplies with sharps kept on-site</li>
+        </ul>
+      </div>
+    `
+  },
+  {
+    id: "p4",
+    num: "PART IV",
+    title: "HR Infrastructure & Employment Framework",
+    description: "PEO selection, California employer registration, payroll, benefits, and your legally compliant employee handbook.",
+    content: `
+      <div class="sub-section">
+        <div class="alert-box red">
+          <div class="alert-icon">⚠️</div>
+          <div class="alert-content">
+            <div class="alert-title">California Employer Obligations Begin on Day 1</div>
+            <div class="alert-text">Many California employer requirements apply from your very first hire — regardless of company size. Workers' compensation insurance must be in place before any employee sets foot in your building. Get HR infrastructure ready before you post your first job listing.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">4.1 Choose Your HR Model</div>
+        <table class="data-table">
+          <thead><tr><th>Model</th><th>Best For</th><th>Cost</th><th>Recommendation</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">PEO (Professional Employer Org)</td><td>Startups — handles payroll, benefits, compliance</td><td>~$100–$200/employee/month</td><td>✅ RECOMMENDED for startup</td></tr>
+            <tr><td class="highlight">In-House HR Director</td><td>50+ employees in Year 1</td><td>$80,000–$110,000/yr salary</td><td>Later hire — after revenue</td></tr>
+            <tr><td class="highlight">HR Consultant on Retainer</td><td>Hybrid / transition phase</td><td>$3,000–$5,000/month</td><td>Good at months 6–18</td></tr>
+          </tbody>
+        </table>
+        <div class="sub-title-sm">Top PEO Companies for California Healthcare</div>
+        <ul class="bullet-list">
+          <li><strong>ADP TotalSource</strong> — excellent California expertise; integrates with most systems</li>
+          <li><strong>Paychex PEO</strong> — strong small-business support; good benefits marketplace</li>
+          <li><strong>Insperity</strong> — premium service; excellent HR consulting support</li>
+          <li><strong>TriNet</strong> — strong for professional services; competitive benefits</li>
+        </ul>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">4.2 California Employer Registration</div>
+        <ul class="bullet-list">
+          <li>Obtain Federal EIN from IRS (irs.gov — immediate online)</li>
+          <li>Register with California EDD — obtain CA Employer Account Number</li>
+          <li>Register for State Disability Insurance (SDI) through EDD</li>
+          <li>Workers' Compensation Insurance BEFORE first hire (California Code §3700)</li>
+          <li>Open dedicated payroll bank account</li>
+          <li>Report each new hire to EDD within 20 days of hire (California New Employee Registry)</li>
+        </ul>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">4.3 Benefits Package — California Market</div>
+        <p class="body-text">California healthcare workers have excellent options. Benefits are a major recruiting differentiator. You will not attract quality hospice clinical staff without a competitive package.</p>
+        <table class="data-table">
+          <thead><tr><th>Benefit</th><th>Recommended Provider</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Health Insurance</td><td>Kaiser Permanente, Anthem Blue Cross, BCBS of California, Health Net</td><td>Cover 75–100% of employee premium</td></tr>
+            <tr><td class="highlight">Dental</td><td>Delta Dental CA (dominant in California)</td><td>Employee + family</td></tr>
+            <tr><td class="highlight">Vision</td><td>VSP or EyeMed</td><td>Affordable add-on</td></tr>
+            <tr><td class="highlight">401(k)</td><td>Any major provider</td><td>Even 2–3% match is powerful retention</td></tr>
+            <tr><td class="highlight">PTO</td><td>—</td><td>CA PTO doesn't expire; paid out at separation</td></tr>
+            <tr><td class="highlight">Mileage Reimbursement</td><td>—</td><td>IRS rate — major value for California field staff</td></tr>
+            <tr><td class="highlight">Cell Phone Stipend</td><td>—</td><td>$30–$50/month — California law requires reimbursement for work use of personal phones</td></tr>
+            <tr><td class="highlight">CEU Reimbursement</td><td>—</td><td>$500–$1,000/year per clinical staff</td></tr>
+            <tr><td class="highlight">EAP (Employee Assistance)</td><td>LiveHealth, Optum, ComPsych</td><td>Critical for hospice — vicarious grief is real</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">4.4 California-Specific Employee Handbook Requirements</div>
+        <p class="body-text">California mandates specific content beyond federal requirements. Have a California employment attorney review your handbook before distribution.</p>
+        <ul class="bullet-list">
+          <li>At-Will Employment Statement</li>
+          <li>Anti-Discrimination & Harassment (FEHA protected classes — broader than federal)</li>
+          <li>Pregnancy Disability Leave (PDL) — California-specific</li>
+          <li>California Family Rights Act (CFRA) Policy</li>
+          <li>Meal and Rest Break Policy (California-specific rules)</li>
+          <li>California Daily Overtime Policy</li>
+          <li>Final Paycheck Policy (critical — immediate on termination)</li>
+          <li>Violence in the Workplace Prevention Policy (SB 553, 2024)</li>
+          <li>Bereavement Leave (AB 1949 — up to 5 days, effective 2023)</li>
+          <li>Lactation Accommodation Policy</li>
+          <li>Cannabis / Drug Policy (off-duty use has California protections)</li>
+          <li>Voting Leave (up to 2 hours paid)</li>
+          <li>HIPAA / CMIA Confidentiality Policy</li>
+          <li>OIG Exclusion Screening Acknowledgment</li>
+        </ul>
+      </div>
+    `
+  },
+  {
+    id: "p5",
+    num: "PART V",
+    title: "Clinical Team Build-Out",
+    description: "Every clinical role, California licensing requirements, salary ranges, and what to ask in interviews.",
+    content: `
+      <div class="sub-section">
+        <div class="sub-title">5.1 Medical Director — Hire This First</div>
+        <div class="alert-box teal">
+          <div class="alert-icon">🔑</div>
+          <div class="alert-content">
+            <div class="alert-title">Priority #1 — Nothing Moves Without a Physician</div>
+            <div class="alert-text">Required by 42 CFR 418 and California HSC. The Medical Director certifies terminal prognosis, oversees clinical protocols, and leads your IDG team. This hire unlocks everything else.</div>
+          </div>
+        </div>
+        <div class="sub-title-sm">California Requirements</div>
+        <ul class="bullet-list">
+          <li>Active, unrestricted California Medical License — verify via Medical Board of California (breeze.ca.gov)</li>
+          <li>DEA Registration active — California DEA number on file</li>
+          <li>CURES registration required for controlled substance prescribing</li>
+          <li>OIG LEIE + California DHCS exclusion checks: CLEARED</li>
+          <li>Professional malpractice insurance certificate on file</li>
+        </ul>
+        <div class="alert-box red">
+          <div class="alert-icon">⚠️</div>
+          <div class="alert-content">
+            <div class="alert-title">California AB5 Warning</div>
+            <div class="alert-text">California AB5 makes it extremely difficult to classify Medical Directors as independent contractors. Most must be employees or under a valid professional corporation arrangement. Consult your healthcare attorney before structuring this relationship.</div>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Arrangement</th><th>Rate</th><th>Best For</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Full-Time Employment</td><td><span class="salary-tag">$200K–$320K/yr</span></td><td>50+ patient census</td></tr>
+            <tr><td class="highlight">Part-Time Retainer</td><td><span class="salary-tag">$8K–$14K/month</span></td><td>Startup phase — recommended</td></tr>
+            <tr><td class="highlight">Per-Patient Oversight Fee</td><td><span class="salary-tag">$50–$100/patient/mo</span></td><td>Add-on to retainer</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">5.2 Clinical Director / DON</div>
+        <p class="body-text">Your clinical operator. Named on the CDPH license. Keeps the entire clinical engine running.</p>
+        <ul class="bullet-list">
+          <li>California RN license — BSN minimum, MSN strongly preferred</li>
+          <li>Must be named on CDPH hospice license as Director of Patient Care Services</li>
+          <li>CHPN (Certified Hospice and Palliative Nurse) — gold standard credential</li>
+          <li>Minimum 3–5 years hospice experience; prior supervisory experience required</li>
+        </ul>
+        <div class="bold-pair"><span class="bp-label">California Salary:</span><span class="bp-val"><span class="salary-tag">$95K–$130K/year</span></span></div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">5.3 RN Case Managers</div>
+        <p class="body-text">Your frontline clinical heroes. They assess, manage symptoms, educate families, and coordinate care across the team — driving through California traffic to do it.</p>
+        <div class="sub-title-sm">Staffing Ratios</div>
+        <table class="data-table">
+          <thead><tr><th>Census</th><th>RNs Needed</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td>1–20 patients</td><td>2 RNs minimum</td><td>Startup staffing</td></tr>
+            <tr><td>20–40 patients</td><td>3–4 RNs</td><td>Growth phase</td></tr>
+            <tr><td>40–60 patients</td><td>4–6 RNs</td><td>Mature operations</td></tr>
+          </tbody>
+        </table>
+        <ul class="bullet-list">
+          <li>California RN license verified active (BreEZe)</li>
+          <li>TB clearance: two-step tuberculin skin test or IGRA blood test; annual review</li>
+          <li>Valid California driver's license and documented auto insurance</li>
+          <li>Current CPR/BLS certification</li>
+          <li>Mandatory reporter training — documented</li>
+        </ul>
+        <div class="bold-pair"><span class="bp-label">California Salary:</span><span class="bp-val"><span class="salary-tag">$80K–$105K/yr + mileage</span></span></div>
+        <div class="alert-box gold">
+          <div class="alert-icon">💡</div>
+          <div class="alert-content">
+            <div class="alert-title">Best Interview Question for RNs</div>
+            <div class="alert-text">"Tell me about a time you were with someone who was suffering. What did you do? What did you say? What do you wish you had done differently?" — The answer reveals emotional intelligence, presence, and genuine calling to this work.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">5.4 Medical Social Worker (MSW)</div>
+        <p class="body-text">California has extraordinary community resources but also unique social complexity — large unhoused population, Medi-Cal complexity, veteran communities, and extreme diversity. Your MSW must navigate all of it.</p>
+        <ul class="bullet-list">
+          <li>MSW degree required by Medicare AND California</li>
+          <li>California BBS licensure: LCSW or ASW (Associate Social Worker under supervision)</li>
+          <li>IHSS (In-Home Supportive Services) navigation knowledge</li>
+          <li>California POLST and AHCD counseling and facilitation</li>
+          <li>Housing resource referrals — significant need in California</li>
+          <li>Veterans' benefits coordination (California has one of the largest veteran populations)</li>
+        </ul>
+        <div class="bold-pair"><span class="bp-label">California Salary:</span><span class="bp-val"><span class="salary-tag">$70K–$90K/year</span></span></div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">5.5 Chaplain / Spiritual Care</div>
+        <p class="body-text">California is the most ethnically and religiously diverse state in the nation. Your chaplain must be genuinely interfaith-competent — not just religion-tolerant.</p>
+        <ul class="bullet-list">
+          <li>Familiarity with Spanish-speaking Catholic traditions (large patient population)</li>
+          <li>Understanding of Buddhist end-of-life beliefs (large Asian/Pacific Islander population)</li>
+          <li>Knowledge of Vietnamese, Korean, Filipino, Chinese, Japanese, South Asian spiritual practices</li>
+          <li>LGBTQ+ inclusive spiritual care — California has significant LGBTQ+ population</li>
+          <li>Comfortable with secular and atheist patients — spiritual care ≠ religious imposition</li>
+          <li>CPE (Clinical Pastoral Education) units required; BCC credential preferred</li>
+        </ul>
+        <div class="bold-pair"><span class="bp-label">California Salary:</span><span class="bp-val"><span class="salary-tag">$52K–$72K/year</span></span></div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">5.6 CNAs, Bereavement Coordinator, Volunteer Coordinator</div>
+        <table class="data-table">
+          <thead><tr><th>Role</th><th>Key California Requirement</th><th>CA Salary Range</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">CNA</td><td>Active in California CNA Registry (californiaCNAregistry.org); Live Scan background check</td><td><span class="salary-tag">$38K–$50K + mileage</span></td></tr>
+            <tr><td class="highlight">LVN</td><td>Active California LVN license; under RN supervision per CA BPC</td><td><span class="salary-tag">$55K–$70K + mileage</span></td></tr>
+            <tr><td class="highlight">Bereavement Coordinator</td><td>MSW, MDiv, or counseling background; track 13-month follow-up for all families</td><td><span class="salary-tag">$48K–$65K</span></td></tr>
+            <tr><td class="highlight">Volunteer Coordinator</td><td>5% of patient care hours must come from volunteers — federal CMS requirement; Live Scan for all volunteers with patient contact</td><td><span class="salary-tag">$42K–$58K</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    `
+  },
+  {
+    id: "p6",
+    num: "PART VI",
+    title: "Administrative Team Build-Out",
+    description: "Administrator, intake, billing, and your marketing engine — the team that keeps the business alive.",
+    content: `
+      <div class="sub-section">
+        <div class="sub-title">6.1 Administrator / Executive Director</div>
+        <p class="body-text">California HSC requires a designated Administrator named on your CDPH license. Must meet CDPH qualification requirements: bachelor's degree in health administration or related field, OR a licensed California RN or physician.</p>
+        <div class="bold-pair"><span class="bp-label">California Salary:</span><span class="bp-val"><span class="salary-tag">$90K–$135K/year</span></span></div>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">6.2 Intake Coordinator / Admissions</div>
+        <p class="body-text">Revenue lives or dies here. In California's competitive hospice market, response time and warmth are your competitive moat.</p>
+        <ul class="bullet-list">
+          <li><strong>Target response time:</strong> Under 15 minutes for all referral calls during business hours</li>
+          <li>Language access: California law requires interpreter services for limited-English-proficient patients — Language Line, Cyracom, or bilingual staff</li>
+          <li>Medi-Cal eligibility screening at intake</li>
+          <li>California POLST and AHCD documentation familiar</li>
+        </ul>
+        <div class="bold-pair"><span class="bp-label">Salary Range:</span><span class="bp-val"><span class="salary-tag">$42K–$58K (Coordinator) · $65K–$85K (RN Intake)</span></span></div>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">6.3 Billing / Revenue Cycle Management</div>
+        <div class="alert-box gold">
+          <div class="alert-icon">💰</div>
+          <div class="alert-content">
+            <div class="alert-title">Recommendation: Outsource First, Hire Later</div>
+            <div class="alert-text">Outsource to a California-specialized hospice RCM firm for first 12–18 months. Firms: Corridor Group, SimiTree, Trella Health, Brightree Revenue Cycle. Fee: 4–7% of net collected revenue. This protects you from billing errors while you build internal expertise.</div>
+          </div>
+        </div>
+        <div class="sub-title-sm">California-Specific Billing Complexity</div>
+        <ul class="bullet-list">
+          <li>Medi-Cal billing via California's Provider Web Portal (separate from Medicare)</li>
+          <li>Dual-eligible patients: Medicare primary, Medi-Cal secondary — complex coordination</li>
+          <li>California Medi-Cal managed care plans (L.A. Care, Health Net) may require separate contracting</li>
+          <li>Medicare NOE (Notice of Election) — must file within 5 days of admission</li>
+          <li>CAP (Medicare Aggregate Payment Cap) — exceeding it means repaying Medicare; track monthly</li>
+        </ul>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">6.4 Community Liaison / Marketing</div>
+        <p class="body-text">California hospice market is saturated in major metros. Differentiation through relationship-building and clinical credibility is essential.</p>
+        <table class="data-table">
+          <thead><tr><th>California Market</th><th>Key Characteristics</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Los Angeles County</td><td>Extremely competitive; diverse; large hospital systems (Cedars-Sinai, Kaiser, UCLA, USC)</td></tr>
+            <tr><td class="highlight">Bay Area</td><td>Physician-led culture; tech-savvy referrers; diverse population</td></tr>
+            <tr><td class="highlight">Orange County</td><td>Affluent patients; good private pay mix; competitive</td></tr>
+            <tr><td class="highlight">Inland Empire</td><td>Underserved in areas; good growth market; large Hispanic population</td></tr>
+            <tr><td class="highlight">San Diego</td><td>Large military/veteran population; strong Medicare mix</td></tr>
+            <tr><td class="highlight">Central Valley</td><td>Often underserved; large agricultural/Hispanic population; less competition</td></tr>
+          </tbody>
+        </table>
+        <div class="bold-pair"><span class="bp-label">California Salary:</span><span class="bp-val"><span class="salary-tag">$60K–$90K/yr + $300–$600/admitted patient commission</span></span></div>
+      </div>
+    `
+  },
+  {
+    id: "p7",
+    num: "PART VII",
+    title: "Vendor & Partner Contracts",
+    description: "Pharmacy, DME, inpatient facilities, legal, and all essential vendor relationships — signed before first patient.",
+    content: `
+      <div class="sub-section">
+        <div class="alert-box red">
+          <div class="alert-icon">📋</div>
+          <div class="alert-content">
+            <div class="alert-title">All Major Vendor Contracts Must Be Signed Before Patient #1</div>
+            <div class="alert-text">You cannot call a pharmacy at 11 PM for a dying patient's morphine if you don't have an active account. You cannot admit a patient if you have no inpatient facility for GIP care. Set these up weeks before your first referral call.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">7.1 Pharmacy Partner — Most Critical Vendor</div>
+        <div class="sub-title-sm">California-Specific Requirements</div>
+        <ul class="bullet-list">
+          <li>California Board of Pharmacy license required</li>
+          <li>California CURES compliance — controlled substance dispensing tracking</li>
+          <li>EPCS (Electronic Prescribing of Controlled Substances) — California mandates this in most cases</li>
+          <li>Los Angeles traffic reality: "2-hour delivery" can mean 6 hours — get geographic SLA commitments</li>
+        </ul>
+        <div class="sub-title-sm">Contract Non-Negotiables</div>
+        <ul class="bullet-list">
+          <li>24/7 pharmacist consultation line — NON-NEGOTIABLE</li>
+          <li>Urgent delivery within 2 hours (written SLA)</li>
+          <li>Comfort Medication Kit supply and replenishment</li>
+          <li>Online ordering portal integrated with EMR</li>
+          <li>California CURES compliance support</li>
+          <li>Medication waste tracking and destruction assistance</li>
+        </ul>
+        <div class="sub-title-sm">Top California Pharmacy Partners</div>
+        <div class="chip-row">
+          <div class="chip teal">Enclara Pharmacia</div>
+          <div class="chip teal">Optum / Genoa Healthcare</div>
+          <div class="chip teal">PharMerica</div>
+          <div class="chip navy">Local Independent Hospice Pharmacies</div>
+        </div>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">7.2 DME (Durable Medical Equipment) Partner</div>
+        <ul class="bullet-list">
+          <li>California DME suppliers must hold state business licenses</li>
+          <li>Oxygen equipment: California Air Quality regulations affect delivery in some regions</li>
+          <li>Same-day delivery SLA for urgent equipment (hospital beds, oxygen) — written commitment</li>
+          <li>24/7 emergency line for equipment failure</li>
+          <li>Compassionate, prompt pickup after patient death — 24–48 hour removal window</li>
+          <li>Wide inventory: hospital beds, air mattresses, wheelchairs, commodes, nebulizers, concentrators</li>
+        </ul>
+        <div class="alert-box gold">
+          <div class="alert-icon">💡</div>
+          <div class="alert-content">
+            <div class="alert-title">DME Dignity Principle</div>
+            <div class="alert-text">Get equipment delivered and set up BEFORE the patient comes home from the hospital. Coming home to a hospital bed that's ready = dignity. Waiting 3 days in a regular bed = a horrible family experience that they will never forget.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">7.3 Inpatient Facility Contracts</div>
+        <p class="body-text">You must have at least one inpatient facility contract before admitting patients. Medicare requires access to GIP (General Inpatient Care) and Inpatient Respite Care.</p>
+        <table class="data-table">
+          <thead><tr><th>Care Type</th><th>Medicare Rate</th><th>Typical Contracted Rate</th><th>Your Margin</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">General Inpatient Care (GIP)</td><td>~$1,098/day</td><td>$600–$900/day</td><td>$198–$498/day</td></tr>
+            <tr><td class="highlight">Inpatient Respite Care</td><td>~$490/day</td><td>$300–$420/day</td><td>$70–$190/day</td></tr>
+          </tbody>
+        </table>
+        <ul class="bullet-list">
+          <li>Target 2–3 SNFs in your service area willing to accept your patients</li>
+          <li>California hospitals with palliative care units: UCSF, Cedars-Sinai, Scripps — pursue these</li>
+          <li>Negotiate below Medicare GIP reimbursement — the spread is your margin on GIP days</li>
+        </ul>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">7.4 Other Essential Vendor Accounts</div>
+        <table class="data-table">
+          <thead><tr><th>Vendor Type</th><th>Options</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Medical Supplies</td><td>McKesson, Cardinal Health, Medline</td><td><span class="priority-tag high">HIGH</span></td></tr>
+            <tr><td class="highlight">Lab Services</td><td>LabCorp, Quest Diagnostics, local hospital reference labs</td><td><span class="priority-tag high">HIGH</span></td></tr>
+            <tr><td class="highlight">Contracted PT/OT/ST</td><td>2–3 therapists per discipline; per-consult basis</td><td><span class="priority-tag medium">MEDIUM</span></td></tr>
+            <tr><td class="highlight">Dietitian (RD)</td><td>Independent contractor; per-consult $75–$150</td><td><span class="priority-tag medium">MEDIUM</span></td></tr>
+            <tr><td class="highlight">Healthcare Attorney</td><td>California healthcare specialty firm</td><td><span class="priority-tag critical">CRITICAL</span></td></tr>
+            <tr><td class="highlight">Healthcare CPA / CFO</td><td>Hospice/home health experience required</td><td><span class="priority-tag high">HIGH</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    `
+  },
+  {
+    id: "p8",
+    num: "PART VIII",
+    title: "Policies & Procedures Development",
+    description: "Complete P&P framework for clinical and administrative operations — California-tailored.",
+    content: `
+      <div class="sub-section">
+        <div class="alert-box teal">
+          <div class="alert-icon">🚀</div>
+          <div class="alert-content">
+            <div class="alert-title">Pro Tip — Don't Write From Scratch</div>
+            <div class="alert-text">Purchase a California-compliant hospice P&P template from a reputable firm (Corridor Group, Simione, Axxess Policy Center) and customize it. This saves 3–4 months of work. Budget $3,000–$8,000. Every dollar spent here is worth ten in prevented compliance violations.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">8.1 Clinical Policies Required</div>
+        <div class="sub-title-sm">Admission & Eligibility</div>
+        <ul class="bullet-list">
+          <li>Admission Criteria and Eligibility Determination</li>
+          <li>Prognosis Documentation and Terminal Certification</li>
+          <li>Informed Consent and Hospice Election Statement</li>
+          <li>Non-Discrimination in Admission (California FEHA + federal)</li>
+          <li>California AHCD (Advance Health Care Directive) Policy</li>
+          <li>California POLST Policy — bright pink form only</li>
+          <li>California Out-of-Hospital DNR Policy</li>
+        </ul>
+        <div class="sub-title-sm">Care Planning</div>
+        <ul class="bullet-list">
+          <li>Initial Comprehensive Assessment (within 5 days of admission)</li>
+          <li>IDG Meeting Policy: every 15 days first 90 days, every 30 days thereafter</li>
+          <li>Cultural and Linguistic Assessment (California requirement)</li>
+        </ul>
+        <div class="sub-title-sm">Clinical Care Protocols</div>
+        <ul class="bullet-list">
+          <li>Pain Management Protocol (opioid and non-opioid)</li>
+          <li>Dyspnea/Respiratory Distress Management</li>
+          <li>Nausea and Vomiting Management</li>
+          <li>Anxiety, Agitation, and Terminal Restlessness Protocol</li>
+          <li>Actively Dying Patient Protocol (signs and symptoms of imminent death)</li>
+          <li>After-Death Care (California coroner notification requirements)</li>
+        </ul>
+        <div class="sub-title-sm">Medication Management — California CURES</div>
+        <ul class="bullet-list">
+          <li>Comfort Medication Kit Protocol: indications, contents, storage, waste destruction</li>
+          <li>California CURES Reporting Requirements</li>
+          <li>Medication Destruction Policy (California Board of Pharmacy + DEA requirements)</li>
+          <li>Electronic Prescribing of Controlled Substances (EPCS) Policy</li>
+        </ul>
+        <div class="sub-title-sm">Emergency & Disaster — California Specific</div>
+        <ul class="bullet-list">
+          <li>24/7 On-Call RN Protocol</li>
+          <li>California Wildfire Evacuation Protocol — critical for California service areas</li>
+          <li>Power Outage Protocol for oxygen-dependent patients</li>
+          <li>General Inpatient Care (GIP) Criteria and Transfer Protocol</li>
+          <li>Continuous Home Care (CHC) Documentation Protocol</li>
+        </ul>
+        <div class="sub-title-sm">Infection Control — Cal/OSHA ATD Standard</div>
+        <ul class="bullet-list">
+          <li>California ATD Standard Compliance Plan (Cal/OSHA §5199 — more stringent than federal OSHA)</li>
+          <li>Bloodborne Pathogen Exposure Control Plan</li>
+          <li>Medical Waste Disposal (California Medical Waste Management Act)</li>
+          <li>California Needlestick Safety and Prevention Act compliance</li>
+        </ul>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">8.2 Administrative & Compliance Policies</div>
+        <ul class="bullet-list">
+          <li>HIPAA Privacy Policy + California CMIA layer</li>
+          <li>Medical Records: California 7-year retention for adults; 1 year past age of majority for minors</li>
+          <li>Patient Access to Records (California HSC 123111 — 5-day response)</li>
+          <li>California Elder/Dependent Adult Abuse Mandatory Reporting</li>
+          <li>Workplace Violence Prevention Plan (SB 553, 2024 — California requirement)</li>
+          <li>Medicare/Medi-Cal Fraud, Waste, and Abuse Prevention</li>
+          <li>OIG Compliance Program</li>
+          <li>Volunteer Screening: California Live Scan for all volunteers with patient contact</li>
+        </ul>
+      </div>
+    `
+  },
+  {
+    id: "p9-10",
+    num: "PART IX–X",
+    title: "Compliance & QAPI Programs",
+    description: "OIG seven-element compliance program and your quality metrics tracking framework.",
+    content: `
+      <div class="sub-section">
+        <div class="sub-title">9.1 Seven-Element Compliance Program</div>
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Element</th><th>California Implementation</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">1</td><td>Written Policies & Standards</td><td>P&P manual + Standards of Conduct signed by all employees at hire</td></tr>
+            <tr><td class="highlight">2</td><td>Compliance Officer & Committee</td><td>Designate CO; committee meets quarterly minimum; CO has direct reporting line to ownership</td></tr>
+            <tr><td class="highlight">3</td><td>Training & Education</td><td>Day 1 orientation 2 hrs minimum; annual refresher; CURES training; mandatory reporter documentation</td></tr>
+            <tr><td class="highlight">4</td><td>Communication Lines</td><td>Anonymous hotline (EthicsPoint, Navex); California Whistleblower Rights poster required (LC 1102.5)</td></tr>
+            <tr><td class="highlight">5</td><td>Internal Monitoring & Auditing</td><td>Monthly documentation audits (10% sample); controlled substance CURES reconciliation; OIG + DHCS exclusion checks monthly</td></tr>
+            <tr><td class="highlight">6</td><td>Enforcement & Discipline</td><td>Progressive discipline documented; zero tolerance for documentation falsification or billing fraud</td></tr>
+            <tr><td class="highlight">7</td><td>Prompt Response</td><td>If overbilling found: voluntary CMS self-disclosure — strongly recommended; California DHCS reporting requirements apply</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">10.1 QAPI Key Quality Metrics</div>
+        <table class="data-table">
+          <thead><tr><th>Metric</th><th>Target</th><th>Data Source</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Pain controlled within 48 hrs of admission</td><td>≥ 90%</td><td>EMR audit</td></tr>
+            <tr><td class="highlight">Dyspnea assessed and managed</td><td>100%</td><td>EMR audit</td></tr>
+            <tr><td class="highlight">Advance Directive on file</td><td>≥ 90%</td><td>Record review</td></tr>
+            <tr><td class="highlight">Care plan completed within 5 days</td><td>100%</td><td>EMR</td></tr>
+            <tr><td class="highlight">IDG meetings on schedule</td><td>100%</td><td>IDG logs</td></tr>
+            <tr><td class="highlight">Hospitalizations per patient month</td><td>&lt; 10%</td><td>Billing data</td></tr>
+            <tr><td class="highlight">ER visits per patient month</td><td>&lt; 8%</td><td>Billing data</td></tr>
+            <tr><td class="highlight">Death in preferred location</td><td>≥ 80%</td><td>Death logs</td></tr>
+            <tr><td class="highlight">Family satisfaction score</td><td>≥ 90% satisfied</td><td>CAHPS survey</td></tr>
+            <tr><td class="highlight">Volunteer hours as % of care hours</td><td>≥ 5%</td><td>Volunteer logs</td></tr>
+            <tr><td class="highlight">Bereavement contact within 30 days</td><td>100%</td><td>Bereavement log</td></tr>
+            <tr><td class="highlight">Staff annual turnover rate</td><td>&lt; 20%</td><td>HR data</td></tr>
+          </tbody>
+        </table>
+        <div class="alert-box navy">
+          <div class="alert-icon">📊</div>
+          <div class="alert-content">
+            <div class="alert-title">HQRP — Hospice Quality Reporting Program</div>
+            <div class="alert-text">CMS publishes your quality data publicly on Medicare Care Compare. Non-submission results in a 2% reduction in ALL Medicare reimbursement. Enroll in HQRP through QualityNet (q-net.cms.hhs.gov) immediately. Confirm your EMR supports automated HQRP data extraction.</div>
+          </div>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: "p11",
+    num: "PART XI",
+    title: "Pre-Patient Master To-Do List",
+    description: "Every single thing that must be done before your first patient admission — 10 categories, 150+ items.",
+    hasChecklist: true,
+    checklistCategories: [
+      {
+        id: "cat_regulatory",
+        title: "Category 1: Regulatory & Licensing",
+        sub: "CDPH, Medicare, Medi-Cal, NPI",
+        items: [
+          "CDPH Hospice License verified active, current, and posted in office",
+          "License reflects current Administrator of Record",
+          "License reflects current Director of Patient Care Services",
+          "Physical plant inspection clearance on file",
+          "License renewal date calendared — 90-day advance reminder set",
+          "Medicare Provider Number (CMS Certification Number) verified active",
+          "Medicare enrollment updated: current ownership, address, service area",
+          "Service area defined and documented (counties and zip codes served)",
+          "PECOS profile complete and accurate",
+          "Medi-Cal Provider Enrollment application submitted to DHCS",
+          "Medi-Cal Provider ID received (or application confirmed in process)",
+          "Organizational NPI (Type 2) active and updated in NPPES",
+          "All billing providers have individual NPIs (Type 1) enrolled",
+          "NPI crosswalked to Medicare and Medi-Cal enrollment records"
+        ]
+      },
+      {
+        id: "cat_personnel",
+        title: "Category 2: Personnel — Hiring & Credentialing",
+        sub: "Medical Director, Clinical Director, All Staff",
+        items: [
+          "Medical Director contract fully executed",
+          "Medical Director CA Medical License verified active (breeze.ca.gov)",
+          "Medical Director DEA Registration verified active — CA DEA number on file",
+          "Medical Director CURES registration verified",
+          "Medical Director OIG LEIE exclusion check: CLEARED — documented",
+          "Medical Director California DHCS exclusion check: CLEARED — documented",
+          "Medical Director malpractice insurance certificate on file",
+          "Medical Directorship Agreement signed — AB5 and Anti-Kickback compliant",
+          "Medical Director added to CDPH license (if required)",
+          "Medical Director NPI enrolled in Medicare and Medi-Cal",
+          "Clinical Director CA RN license verified active",
+          "Clinical Director OIG and DHCS exclusion checks: CLEARED",
+          "Clinical Director employment agreement signed",
+          "Clinical Director TB clearance documented",
+          "Clinical Director Live Scan (California background check) completed and cleared",
+          "CDPH license updated to reflect Director of Patient Care Services",
+          "All RN licenses verified active via BreEZe (every RN hired)",
+          "All clinical staff OIG LEIE exclusion checks: CLEARED — documented",
+          "All clinical staff California DHCS exclusion checks: CLEARED — documented",
+          "All clinical staff California Live Scan fingerprint checks completed and cleared",
+          "California DMV driving record check for all field staff",
+          "TB clearance documented for all clinical staff — current",
+          "CPR/BLS certification current for all clinical staff",
+          "COVID-19 vaccination status documented (per current CA requirements)",
+          "I-9 Employment Eligibility Verification completed for every employee",
+          "W-4 (Federal) and DE-4 (California) withholding forms completed",
+          "Direct deposit authorization signed by all employees",
+          "HIPAA training completed and signed acknowledgment — all staff",
+          "Compliance training completed and signed acknowledgment — all staff",
+          "Mandatory reporter training completed and documented — all staff",
+          "Employee handbook received, read, and signed — all staff",
+          "Job description signed and in personnel file for each employee",
+          "Offer letter signed and in personnel file for each employee",
+          "EMR access granted and training completed — all staff",
+          "California cell phone stipend agreement signed (BYOD policy staff)",
+          "Mileage reimbursement set up in payroll for all field staff"
+        ]
+      },
+      {
+        id: "cat_office",
+        title: "Category 3: Office & Physical Infrastructure",
+        sub: "Furniture, technology, safety, signage",
+        items: [
+          "All furniture received, assembled, and placed",
+          "All technology equipment received, configured, and tested",
+          "Internet service active — speed tested (minimum 100 Mbps verified)",
+          "VoIP phone system active — all extensions programmed and tested",
+          "After-hours call routing TESTED: calls route to on-call RN after hours",
+          "Intake phone line active with professional greeting recorded",
+          "Printer/scanner/fax operational and tested",
+          "Medical records room locked and organized",
+          "Supply room stocked: PPE 30-day minimum, clinical supplies, office supplies",
+          "Separate clinical refrigerator set up and clearly labeled",
+          "First Aid kit stocked and mounted — Cal/OSHA ANSI Z308.1-2021 compliant",
+          "AED mounted, tested, and all staff trained",
+          "Fire extinguisher inspected and tagged",
+          "Emergency exit routes posted and unobstructed",
+          "Cal/OSHA poster posted in workplace",
+          "California DFEH anti-discrimination poster posted",
+          "HIPAA Notice of Privacy Practices posted and copies available",
+          "Patient Rights poster posted",
+          "California Whistleblower Rights poster posted (LC 1102.5)",
+          "Exterior and interior signage installed",
+          "Visitor sign-in log in place at reception"
+        ]
+      },
+      {
+        id: "cat_tech",
+        title: "Category 4: Technology & IT Systems",
+        sub: "EMR, HIPAA security, devices, CURES",
+        items: [
+          "EMR contract signed and fully executed",
+          "EMR implementation complete and system is live",
+          "All staff have individual EMR logins — NO shared logins",
+          "Clinical staff EMR training completed — training hours documented",
+          "Administrative staff EMR training completed",
+          "EMR mobile app installed on all field staff tablets/phones and tested",
+          "Electronic physician order workflow tested end-to-end",
+          "IDG documentation template configured and tested",
+          "Care plan template configured",
+          "Billing integration confirmed and tested",
+          "HQRP data submission capability confirmed in EMR",
+          "Written HIPAA Security Risk Assessment completed and documented",
+          "All workstations: encryption enabled (BitLocker or FileVault)",
+          "All devices: automatic screen lock configured (5-minute timeout)",
+          "Hardware firewall active and configured",
+          "MDM software active on all mobile devices",
+          "Password manager deployed — all staff enrolled",
+          "Antivirus/endpoint protection active on all devices",
+          "Cloud backup active — test restore completed",
+          "VPN active and all remote staff trained",
+          "Business Associate Agreements (BAAs) signed with: EMR, email provider, cloud storage, fax service, payroll, billing company",
+          "Secure messaging (TigerConnect or equivalent) active — staff trained — NO patient PHI via personal SMS"
+        ]
+      },
+      {
+        id: "cat_vendors",
+        title: "Category 5: Vendor Contracts",
+        sub: "Pharmacy, DME, inpatient facilities, all vendors",
+        items: [
+          "Pharmacy contract fully executed",
+          "24/7 pharmacist phone line tested — number saved in on-call guide",
+          "Pharmacy online ordering portal set up for Medical Director and Clinical Director",
+          "Comfort Medication Kit formulary approved by Medical Director — standing orders signed",
+          "CMK delivery process established and documented",
+          "California CURES registration confirmed for all prescribers using pharmacy",
+          "DME contract fully executed",
+          "DME 24/7 emergency line tested — number saved in on-call guide",
+          "DME standard hospice order set created and shared with partner",
+          "DME same-day delivery SLA confirmed in writing",
+          "Post-death equipment pickup protocol established",
+          "Minimum 1 SNF contract for GIP fully executed",
+          "Minimum 1 facility contract for Inpatient Respite Care fully executed",
+          "Inpatient facility clinical handoff protocol documented",
+          "Medical supply vendor accounts active (McKesson, Medline, or equivalent)",
+          "Lab services contract active: LabCorp or Quest",
+          "PT/OT/Speech therapists contracted: minimum 2 per discipline",
+          "Dietitian (RD) contracted on per-consult basis",
+          "Healthcare legal counsel retained",
+          "Healthcare accountant/CPA engaged",
+          "RCM/billing company contract executed (if outsourcing)"
+        ]
+      },
+      {
+        id: "cat_pp",
+        title: "Category 6: Policies & Procedures",
+        sub: "P&P manual completion and distribution",
+        items: [
+          "P&P manual completed — all clinical sections",
+          "P&P manual completed — all administrative/compliance sections",
+          "P&P manual reviewed and approved by Medical Director — signed",
+          "P&P manual reviewed and approved by Clinical Director — signed",
+          "P&P manual distributed to all staff — receipt acknowledged and documented",
+          "All clinical staff completed orientation to key P&P sections",
+          "Comfort Medication Kit protocol: written and Medical Director standing orders signed",
+          "On-call protocol: documented, distributed, tested via mock after-hours call",
+          "After-death procedures documented — California coroner notification requirements included",
+          "California wildfire/disaster plan completed — county-specific",
+          "Power outage protocol established for oxygen-dependent patients",
+          "Cal/OSHA ATD Exposure Control Plan (§5199) completed",
+          "California CURES controlled substance protocol documented"
+        ]
+      },
+      {
+        id: "cat_compliance",
+        title: "Category 7: Compliance & Legal",
+        sub: "Compliance program, WVPP, IIPP, legal framework",
+        items: [
+          "Compliance Program formally established with written plan",
+          "Compliance Officer designated — name documented",
+          "Compliance Committee formed — charter documented",
+          "Anonymous reporting mechanism active (hotline or web form) — tested",
+          "OIG LEIE exclusion check process established — monthly calendar set",
+          "California DHCS exclusion check process established — monthly calendar set",
+          "Live Scan background check process established for all new hires",
+          "Workplace Violence Prevention Plan (WVPP) completed — California SB 553",
+          "Cal/OSHA IIPP (Injury & Illness Prevention Program) completed and posted",
+          "Anti-Kickback Statute training completed — all staff",
+          "False Claims Act education completed — all staff",
+          "Medical Director compensation arrangement reviewed by healthcare attorney — Stark/AKS compliance documented"
+        ]
+      },
+      {
+        id: "cat_billing",
+        title: "Category 8: Billing & Financial",
+        sub: "Medicare, Medi-Cal, NOE process, CAP tracking",
+        items: [
+          "Medicare billing system active and tested — test claim submitted",
+          "Medi-Cal billing system active (or confirmed with RCM company)",
+          "Medicare NOE process established — team knows 5-day filing deadline",
+          "Medicare NOE submission process tested in EMR and billing system",
+          "Billing team trained on hospice-specific Medicare claim requirements",
+          "CAP (Medicare Aggregate Payment Cap) tracking established — spreadsheet or software",
+          "Revenue cycle management workflow documented: admission → claim → payment",
+          "Denial management workflow established: who receives, who responds, timeline",
+          "Accounts Receivable tracking established — target &lt; 35 days",
+          "Operating bank account funded (6 months expenses recommended)",
+          "Payroll account funded for first payroll cycle",
+          "Chart of accounts established in accounting software",
+          "Monthly financial reporting cadence established"
+        ]
+      },
+      {
+        id: "cat_intake",
+        title: "Category 9: Intake & Admissions Process",
+        sub: "Intake workflow, consent forms, language access",
+        items: [
+          "Intake phone line active with professional, warm greeting",
+          "Intake workflow documented: from call receipt to admission",
+          "Intake team trained and practiced mock referral calls",
+          "Referral intake form in EMR",
+          "Hospice election statement/consent forms finalized — California AHCD-compliant",
+          "Patient Rights and Responsibilities form finalized — California-specific content",
+          "All admission forms reviewed by healthcare attorney",
+          "California language access services established — Language Line or bilingual staff protocol",
+          "Medi-Cal eligibility verification process established",
+          "Admission packet assembled and digitized in EMR",
+          "First visit supply bag prepared for admitting RN: intake forms, consent docs, assessment tools"
+        ]
+      },
+      {
+        id: "cat_clinical",
+        title: "Category 10: Clinical Readiness — Final Checks",
+        sub: "Mock drills, on-call guide, field staff readiness",
+        items: [
+          "Full mock admission conducted — admitting RN practiced complete intake workflow — gaps corrected",
+          "Mock IDG meeting conducted — all disciplines practiced documentation and care plan review",
+          "Mock after-hours crisis call conducted — on-call RN tested on protocol and documentation",
+          "Mock death call conducted — team practiced death notification and after-death procedures",
+          "Medical Director has active ordering access in EMR and signed standing orders for comfort kits",
+          "On-call schedule established for first 4 weeks — all clinical staff informed",
+          "Clinical on-call guide completed and distributed: all emergency numbers (pharmacy, DME, MD, RN, inpatient facility), step-by-step crisis protocols",
+          "All field staff have patient visit supplies: PPE, assessment tools, mobile EMR access, on-call guide",
+          "Vehicle safety check: field staff confirm personal vehicles roadworthy and insured — documented",
+          "First QAPI committee meeting scheduled",
+          "First community education event planned"
+        ]
+      }
+    ]
+  },
+  {
+    id: "p12",
+    num: "PART XII",
+    title: "Financial Planning & Revenue",
+    description: "Medicare rates, California revenue projections, startup capital requirements, and key financial metrics.",
+    content: `
+      <div class="sub-section">
+        <div class="sub-title">12.1 Medicare Hospice Reimbursement Rates (2024)</div>
+        <table class="data-table">
+          <thead><tr><th>Level of Care</th><th>Daily Rate</th><th>When Used</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Routine Home Care — Days 1–60</td><td><span class="salary-tag">~$223/day</span></td><td>Standard home-based care</td></tr>
+            <tr><td class="highlight">Routine Home Care — Days 61+</td><td><span class="salary-tag">~$176/day</span></td><td>After 60 days on hospice</td></tr>
+            <tr><td class="highlight">Continuous Home Care (CHC)</td><td><span class="salary-tag">~$1,463/day</span></td><td>8+ hours nursing during crisis</td></tr>
+            <tr><td class="highlight">Inpatient Respite Care (IRC)</td><td><span class="salary-tag">~$490/day</span></td><td>5-day max caregiver relief</td></tr>
+            <tr><td class="highlight">General Inpatient Care (GIP)</td><td><span class="salary-tag">~$1,098/day</span></td><td>Uncontrolled symptoms; highest rate</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">12.2 Revenue Projections — California Market (Conservative)</div>
+        <table class="data-table">
+          <thead><tr><th>Month</th><th>Census</th><th>Est. Monthly Revenue</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Month 1</td><td>3–8 patients</td><td><span class="salary-tag">$15K–$40K</span></td><td>First admissions ramp-up</td></tr>
+            <tr><td class="highlight">Month 3</td><td>15–22 patients</td><td><span class="salary-tag">$75K–$110K</span></td><td>Referral engine building</td></tr>
+            <tr><td class="highlight">Month 6</td><td>30–40 patients</td><td><span class="salary-tag">$150K–$200K</span></td><td>Operations stabilizing</td></tr>
+            <tr><td class="highlight">Month 12</td><td>55–70 patients</td><td><span class="salary-tag">$275K–$350K</span></td><td>Approaching breakeven</td></tr>
+            <tr><td class="highlight">Month 18</td><td>80–100 patients</td><td><span class="salary-tag">$400K–$500K</span></td><td>Profitable — scaling phase</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">12.3 Startup Capital Requirements — California</div>
+        <div class="alert-box gold">
+          <div class="alert-icon">💰</div>
+          <div class="alert-content">
+            <div class="alert-title">California Cost Reality Check</div>
+            <div class="alert-text">California is an expensive market to operate in. Higher wages, higher workers' comp rates, higher real estate, and California-specific compliance costs (CURES, Cal/OSHA ATD, SB 553) increase operating costs above national averages. Budget with California-specific numbers.</div>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Expense Category</th><th>Estimated Range (California)</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Office setup: furniture, equipment, IT</td><td>$50,000–$120,000</td></tr>
+            <tr><td class="highlight">EMR implementation + Year 1 license</td><td>$15,000–$40,000</td></tr>
+            <tr><td class="highlight">Legal and compliance setup</td><td>$10,000–$25,000</td></tr>
+            <tr><td class="highlight">P&P manual template + customization</td><td>$5,000–$12,000</td></tr>
+            <tr><td class="highlight">Marketing materials and branding</td><td>$5,000–$20,000</td></tr>
+            <tr><td class="highlight">Staff salaries (first 6 months — pre-revenue ramp)</td><td>$200,000–$400,000</td></tr>
+            <tr><td class="highlight">Benefits + payroll taxes</td><td>$40,000–$80,000</td></tr>
+            <tr><td class="highlight">Insurance premiums (Workers Comp, GL, D&O)</td><td>$15,000–$35,000</td></tr>
+            <tr><td class="highlight">Clinical supplies and PPE</td><td>$10,000–$20,000</td></tr>
+            <tr><td class="highlight">Operating reserve (6 months recommended)</td><td>$150,000–$300,000</td></tr>
+            <tr><td class="highlight"><strong>TOTAL ESTIMATED STARTUP CAPITAL</strong></td><td><strong>$500,000 – $1,000,000+</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    `
+  },
+  {
+    id: "p13",
+    num: "PART XIII",
+    title: "Marketing & Referral Development",
+    description: "California market strategy, referral source priorities, digital presence, and Anti-Kickback compliance.",
+    content: `
+      <div class="sub-section">
+        <div class="sub-title">13.1 Referral Source Priority Matrix — California</div>
+        <table class="data-table">
+          <thead><tr><th>Tier</th><th>Referral Source</th><th>California Strategy</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">TIER 1 — Highest</td><td>Hospital Discharge Planners</td><td>In-service visits weekly; fast response commitment; RN/SW liaison for clinical credibility</td></tr>
+            <tr><td class="highlight">TIER 1</td><td>Oncology Practices</td><td>Medical Director physician relationships; cancer center partnerships (City of Hope, UCLA, UCSF)</td></tr>
+            <tr><td class="highlight">TIER 1</td><td>Cardiology / CHF Clinics</td><td>CHF is a major hospice population — position as CHF specialty experts</td></tr>
+            <tr><td class="highlight">TIER 1</td><td>SNF Social Services Directors</td><td>Visit weekly; provide value-added resources; build personal relationship</td></tr>
+            <tr><td class="highlight">TIER 2</td><td>Primary Care Physicians</td><td>Education-focused on non-cancer eligibility (dementia, CHF, COPD)</td></tr>
+            <tr><td class="highlight">TIER 2</td><td>Assisted Living / Memory Care</td><td>Facility agreements; in-service training for staff on recognizing appropriate residents</td></tr>
+            <tr><td class="highlight">TIER 2</td><td>Nephrology / Dialysis Centers</td><td>ESRD patients choosing comfort — large CA dialysis population (DaVita, Fresenius)</td></tr>
+            <tr><td class="highlight">TIER 3</td><td>Veterans Service Organizations</td><td>California has one of the largest veteran populations — We Honor Veterans program</td></tr>
+            <tr><td class="highlight">TIER 3</td><td>Faith Communities</td><td>Catholic, Protestant, Buddhist, Islamic, Jewish, Hindu — California's diversity is an opportunity</td></tr>
+            <tr><td class="highlight">TIER 3</td><td>PACE Programs</td><td>California has active PACE programs — build relationships with PACE care teams</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">13.2 Digital Presence Strategy</div>
+        <ul class="bullet-list">
+          <li><strong>Website:</strong> professional, mobile-optimized, compassionate tone — NOT corporate, NOT salesy</li>
+          <li><strong>Spanish-language version:</strong> California law + business imperative — significant Spanish-speaking hospice population</li>
+          <li><strong>Google Business Profile:</strong> completely filled, regularly updated, photos of team (never patients)</li>
+          <li><strong>SEO:</strong> optimize for "hospice care [city] CA", "end of life care [county]"</li>
+          <li><strong>LinkedIn:</strong> professional presence for Medical Director and leadership — referral sources research you</li>
+          <li><strong>Facebook:</strong> community-facing; advance care planning education; grief support resources</li>
+          <li><strong>IMPORTANT:</strong> Do NOT use patient stories without explicit, documented HIPAA + CMIA-compliant authorization</li>
+        </ul>
+      </div>
+      <div class="sub-section">
+        <div class="alert-box red">
+          <div class="alert-icon">⚖️</div>
+          <div class="alert-content">
+            <div class="alert-title">Anti-Kickback Compliance — California + Federal</div>
+            <div class="alert-text">Any thing of value offered to referral sources in exchange for referrals is illegal. California Insurance Code 1871.7 adds state-level penalties. Permitted: reasonable educational in-service meals, educational materials of nominal value, community health fairs. Get attorney guidance before any marketing activity that involves giving anything of value to referral sources.</div>
+          </div>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: "p14",
+    num: "PART XIV",
+    title: "90-Day Launch Timeline",
+    description: "Sequenced, week-by-week launch roadmap from Day 1 to your first admitted patients.",
+    content: `
+      <div class="sub-section">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-phase">Days 1–14 — Foundation Phase</div>
+            <div class="timeline-title">Build the legal, HR, and technology foundation</div>
+            <ul class="bullet-list">
+              <li><strong class="priority-tag critical" style="font-size:11px;padding:2px 8px;border-radius:4px;">CRITICAL</strong> Contract Medical Director — verify CA license, DEA, CURES, execute agreement reviewed by attorney</li>
+              <li><strong class="priority-tag critical" style="font-size:11px;padding:2px 8px;border-radius:4px;">CRITICAL</strong> Engage PEO (ADP, Paychex, Insperity) — complete setup before first hire</li>
+              <li>Select and contract EMR system — begin implementation (6–10 week timeline)</li>
+              <li>Engage healthcare attorney; engage hospice-specialized RCM company</li>
+              <li>Verify CDPH license, Medicare enrollment; submit Medi-Cal enrollment application</li>
+              <li>Post job listings: Clinical Director, 2 RNs, MSW, Chaplain, Intake Coordinator, Office Manager</li>
+              <li>Complete Cal/OSHA IIPP; purchase P&P template; begin California customization</li>
+              <li>Order all office furniture, technology equipment, and schedule IT installation</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-phase">Days 15–30 — Team Building Phase</div>
+            <div class="timeline-title">Hire core clinical and administrative team</div>
+            <ul class="bullet-list">
+              <li>Hire Clinical Director — complete all CA credentialing, Live Scan, OIG check</li>
+              <li>Finalize pharmacy contract and DME contract — test delivery and ordering systems</li>
+              <li>Interview and hire: 2 RN Case Managers, MSW (LCSW/ASW), Chaplain, Intake Coordinator, Office Manager</li>
+              <li>Complete all new hire processing: Live Scan, TB clearance, license verification, I-9, benefits enrollment</li>
+              <li>Office fully set up: furniture, IT active, phones working, EMR access provisioned</li>
+              <li>P&P manual: clinical policies section completed; MD and Clinical Director review begun</li>
+              <li>Begin SNF and inpatient facility contract negotiations</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-phase">Days 31–50 — Infrastructure Phase</div>
+            <div class="timeline-title">Activate systems, complete policies, begin outreach</div>
+            <ul class="bullet-list">
+              <li><strong>EMR go-live</strong> — all staff trained and using system for documentation</li>
+              <li>P&P manual completed, signed by MD and Clinical Director, distributed to all staff</li>
+              <li>All staff: HIPAA training, compliance training, mandatory reporter training — documented</li>
+              <li>Inpatient facility contracts signed (minimum 1 GIP, 1 respite)</li>
+              <li>Hire CNAs (3–4), Bereavement Coordinator, Volunteer Coordinator</li>
+              <li>Billing system: Medicare NOE process tested; Medi-Cal setup confirmed</li>
+              <li>Community Liaison hired — market outreach begins</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-phase">Days 51–65 — Clinical Readiness Phase</div>
+            <div class="timeline-title">Mock drills, final checks, field staff readiness</div>
+            <ul class="bullet-list">
+              <li>Conduct full mock admission — from intake call through care plan — debrief and correct all gaps</li>
+              <li>Conduct mock IDG meeting — all disciplines practice documentation and care plan review</li>
+              <li>Conduct mock after-hours crisis call — on-call RN tested on protocol and documentation</li>
+              <li>Conduct mock death call — team practices death notification and after-death procedures</li>
+              <li>Clinical on-call guide completed and distributed to all clinical staff</li>
+              <li>CMK standing orders signed by Medical Director; delivery tested with pharmacy</li>
+              <li>Community Liaison: schedule first 10 in-service presentations with referral targets</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-phase">Days 66–90 — Soft Launch & Optimization</div>
+            <div class="timeline-title">First patients, first claims, first quality data</div>
+            <ul class="bullet-list">
+              <li>Accept first referrals — target 5–10 admissions in first 2 weeks</li>
+              <li>First Medicare NOE submissions filed within 5 days of each admission — verify process flawlessly</li>
+              <li>First IDG meetings held on admitted patients — document attendance and care plan review</li>
+              <li>First claims submitted to Medicare — verify clean submission; track for payment or denials</li>
+              <li>QAPI meeting #2: review first patient outcomes data</li>
+              <li>Staff debrief: what works? What needs refinement? Fix it now while census is low</li>
+              <li>Referral source analysis: who sent referrals? Who didn't convert? Adjust strategy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    `
+  },
+  {
+    id: "p15",
+    num: "PART XV",
+    title: "Culture — The Foundation of Everything",
+    description: "Why culture determines whether this mission succeeds or fails — and how to build it from Day 1.",
+    content: `
+      <div class="sub-section">
+        <div class="sub-title">15.1 Build a Culture of Sacred Purpose</div>
+        <p class="body-text">Every system in this guide exists to make one thing possible: your team showing up fully present at the bedsides of dying human beings and their families. If you get the culture wrong, nothing else matters. If you get it right, the mission takes care of itself.</p>
+        <div class="alert-box teal">
+          <div class="alert-icon">🕯️</div>
+          <div class="alert-content">
+            <div class="alert-title">The Honoring Ritual — Implement This on Day 1</div>
+            <div class="alert-text">When a patient dies, hold a brief, intentional moment for the team — a name read aloud, a moment of silence, a candle lit in the office. This ritual helps staff process grief and reminds everyone that each patient's life mattered. Organizations without this ritual have measurably higher burnout rates.</div>
+          </div>
+        </div>
+        <div class="sub-title-sm">Cultural Practices to Establish Immediately</div>
+        <ul class="bullet-list">
+          <li><strong>Write your Mission Statement with your founding team</strong> — not alone at a desk. Shared authorship creates shared ownership.</li>
+          <li><strong>Case Debrief Protocol:</strong> After a difficult death or complex family situation, offer structured debrief — even 10 minutes on a team call. Never leave staff isolated with heavy emotional experiences.</li>
+          <li><strong>Celebrate extraordinary care:</strong> When a nurse stays 3 extra hours, when a chaplain makes an unscheduled visit — document it, celebrate it, share it. These become your organizational identity.</li>
+          <li><strong>Zero-tolerance for compassion fatigue silence:</strong> Name it in team meetings. Normalize asking for help. EAP must be actively promoted — not just listed in a handbook.</li>
+        </ul>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">15.2 California Workforce Culture</div>
+        <ul class="bullet-list">
+          <li><strong>Work-life integration:</strong> California workers expect schedule respect. Chronic caseload overloading loses your best nurses within 12 months.</li>
+          <li><strong>Diversity, Equity, and Inclusion:</strong> California's workforce is extraordinarily diverse. Build leadership that reflects the communities you serve. Cultural humility training is not optional.</li>
+          <li><strong>Psychological safety:</strong> Clinical staff must feel safe raising concerns. If concerns go underground, care quality suffers and regulatory risk rises.</li>
+          <li><strong>Transparent leadership:</strong> Share information. Explain decisions. Invite feedback. California healthcare workers distrust command-and-control management.</li>
+        </ul>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">15.3 Hire for Values — Train for Skills</div>
+        <p class="body-text">You can train a skilled nurse on your formulary. You cannot train someone to be emotionally present at a death bed if they are not already oriented toward that kind of work.</p>
+        <div class="alert-box navy">
+          <div class="alert-icon">💬</div>
+          <div class="alert-content">
+            <div class="alert-title">The Single Best Interview Question — Use It Every Time</div>
+            <div class="alert-text">"Tell me about a time you were with someone who was suffering — a patient, a family member, anyone. What did you do? What did you say? What do you wish you had done differently?" — The answer reveals emotional intelligence, authentic presence, capacity to reflect, and genuine calling to this work. Listen for authentic engagement, absence of clinical detachment, and willingness to acknowledge imperfection.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">15.4 A Final Word — From 15 Years in This Work</div>
+        <p class="body-text">The families who choose your hospice are doing so on the worst days of their lives. They are exhausted. They are grieving in advance. They are terrified that their loved one will suffer. They are desperately hoping someone will show up and actually care — not perform care, not document care, but genuinely, humanly care.</p>
+        <p class="body-text">Every policy you write, every vendor you contract, every employee you hire, every system you build — it all exists so that your team can show up fully for those families.</p>
+        <p class="body-text">The hospice that stays connected to that truth — even when census pressure is high, even when billing is a mess, even when staff call out sick — builds an unshakeable reputation. Referrals come because families tell their doctors "they were incredible." Staff stay because the work is meaningful. The community trusts you because you've earned it one family at a time.</p>
+        <div class="alert-box teal">
+          <div class="alert-icon">❤️</div>
+          <div class="alert-content">
+            <div class="alert-title">Build It Right. Build It With Love. Build It Like It Matters.</div>
+            <div class="alert-text">Because it does.</div>
+          </div>
+        </div>
+      </div>
+    `
+  }
+
+  ,
+  {
+    id: "p16",
+    num: "PART XVI",
+    title: "Billing & Revenue Cycle Management",
+    description: "Medicare hospice billing codes, per-diem rates, CAP calculation, NOE/NOTR filing, claim submission, ADR response, and revenue cycle best practices.",
+    content: `
+      <div class="sub-section">
+        <div class="sub-title">16.1 Medicare Hospice Levels of Care & Per-Diem Rates</div>
+        <p class="body-text">Medicare hospice is a per-diem benefit — the hospice receives a fixed daily rate regardless of actual services delivered that day. This structure rewards clinical efficiency and penalizes agencies that over-deliver without documenting necessity. Understanding per-diem rates is foundational to financial survival.</p>
+        <div class="sub-title-sm">Four Levels of Hospice Care</div>
+        <table class="data-table">
+          <thead><tr><th>Level of Care</th><th>Code</th><th>FY2025 Base Rate (approx)</th><th>When Appropriate</th><th>CMS Authority</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Routine Home Care (RHC) — Days 1–60</td><td>651</td><td>~$217/day</td><td>Standard home-based hospice care — majority of hospice days</td><td>42 CFR 418.302(b)(1)</td></tr>
+            <tr><td class="highlight">Routine Home Care (RHC) — Days 61+</td><td>651</td><td>~$171/day</td><td>Same as above — lower rate after day 60 of current benefit period</td><td>42 CFR 418.302(b)(1)</td></tr>
+            <tr><td class="highlight">Continuous Home Care (CHC)</td><td>652</td><td>~$1,390/day (hourly rate × hours)</td><td>Medical crisis requiring 8+ hours/day of primarily nursing care at home; not custodial</td><td>42 CFR 418.302(b)(2)</td></tr>
+            <tr><td class="highlight">Inpatient Respite Care (IRC)</td><td>655</td><td>~$476/day</td><td>5-day maximum per benefit period; caregiver rest; inpatient facility stay</td><td>42 CFR 418.302(b)(3)</td></tr>
+            <tr><td class="highlight">General Inpatient Care (GIP)</td><td>656</td><td>~$1,109/day</td><td>Symptoms not manageable at home; pain crisis; uncontrolled bleeding; terminal restlessness requiring IV medication</td><td>42 CFR 418.302(b)(4)</td></tr>
+          </tbody>
+        </table>
+        <div class="alert-box red">
+          <div class="alert-icon">🚨</div>
+          <div class="alert-content">
+            <div class="alert-title">GIP Documentation — Critical Audit Target</div>
+            <div class="alert-text">CMS aggressively audits GIP claims. Every GIP day must be justified by documented medical necessity that cannot be managed at home. Document: specific symptoms, medications tried, why home management failed, physician order for GIP level, daily nursing assessments showing need for inpatient intensity. GIP without this documentation will be denied and may trigger a RAC audit of your entire census.</div>
+          </div>
+        </div>
+        <div class="sub-title-sm">Service Intensity Add-On (SIA)</div>
+        <p class="body-text">Added in 2016, SIA provides additional payment for RN or Social Worker visits during the last 7 days of life for patients on Routine Home Care. Approximately $42–$45 additional per RN visit hour and $20–$23 per MSW hour. Maximize SIA by: ensuring RN visits daily in last 7 days when patient is at home; documenting visits and time precisely in HospiceMD; ensuring MSW is visiting. SIA is paid automatically by CMS based on your visit documentation — do not leave this on the table.</p>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">16.2 Medicare Aggregate Cap (CAP) — Do Not Miss This</div>
+        <div class="alert-box gold">
+          <div class="alert-icon">⚠️</div>
+          <div class="alert-content">
+            <div class="alert-title">The CAP Is a Common Hospice Financial Killer</div>
+            <div class="alert-text">The Medicare Aggregate CAP limits total Medicare hospice payments per beneficiary over the cap calculation period. For FY2025 the cap is approximately $34,000 per beneficiary. If your agency's aggregate payments exceed the cap, you must repay Medicare the difference. Many small hospices have been financially devastated by unexpected CAP liability. Monitor your CAP position monthly.</div>
+          </div>
+        </div>
+        <p class="body-text">How CAP works: CMS calculates your cap liability based on the number of Medicare hospice beneficiaries served multiplied by the annual cap amount. If your total Medicare payments divided by your beneficiary count exceeds the cap amount, you owe the difference back to Medicare. High-LOS patients (patients who live much longer than 6 months) dramatically increase CAP risk. Monitor in HospiceMD using CAP reporting. Consult your hospice billing specialist monthly once census exceeds 15 patients.</p>
+        <div class="sub-title-sm">CAP Risk Indicators — Monitor Monthly</div>
+        <ul class="bullet-list">
+          <li>Average Length of Stay (ALOS) exceeds 90 days — monitor by payer</li>
+          <li>Percentage of patients exceeding 180 days on service</li>
+          <li>Patients discharged "improved" or "no longer meets criteria" — these patients count against CAP without generating full revenue</li>
+          <li>CAP percentage tracker: total Medicare payments ÷ (beneficiary count × cap amount) — alert at 80% and again at 90%</li>
+        </ul>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">16.3 NOE and NOTR — Filing Deadlines</div>
+        <p class="body-text">Two of the most operationally critical filing requirements in hospice billing:</p>
+        <table class="data-table">
+          <thead><tr><th>Filing</th><th>What It Is</th><th>Deadline</th><th>Penalty for Violation</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">NOE (Notice of Election)</td><td>Notifies Medicare that patient has elected the hospice benefit</td><td>Within 5 calendar days of election date</td><td>Days 1–5 of care are non-billable — billed at $0 for each day filed late</td></tr>
+            <tr><td class="highlight">NOTR (Notice of Termination/Revocation)</td><td>Notifies Medicare when patient leaves hospice (death, revocation, transfer)</td><td>Within 5 calendar days of discharge</td><td>Next hospice admission cannot begin until NOTR is processed — blocks new elections</td></tr>
+          </tbody>
+        </table>
+        <p class="body-text">NOE filing is done through HospiceMD's billing module. Office Manager tracks: admission date, NOE filed date, confirmation number. NOTR is filed at death or discharge. Never let NOE filing fall to Day 6 or later. Set a daily 9am reminder to check for admissions requiring NOE.</p>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">16.4 Claim Submission and Revenue Cycle</div>
+        <div class="sub-title-sm">Billing Cycle Timeline</div>
+        <ul class="bullet-list">
+          <li><strong>Day 1–5 of month:</strong> Run end-of-month billing reports in HospiceMD; verify all visits documented; confirm IDG dates; verify certifications current</li>
+          <li><strong>Day 5–7:</strong> Submit monthly claims via clearinghouse (HospiceMD connects to Waystar, Change Healthcare, or similar)</li>
+          <li><strong>Day 14–21:</strong> Medicare pays approximately 14 days after clean claim receipt — verify EOB (Explanation of Benefits)</li>
+          <li><strong>Monthly:</strong> Reconcile EOBs against HospiceMD billing reports; investigate all denials immediately</li>
+          <li><strong>Monthly:</strong> Review Accounts Receivable aging report — escalate any claim over 45 days</li>
+        </ul>
+        <div class="sub-title-sm">Common Claim Denial Reasons — Prevent Before They Happen</div>
+        <table class="data-table">
+          <thead><tr><th>Denial Reason</th><th>Root Cause</th><th>Prevention</th></tr></thead>
+          <tbody>
+            <tr><td>Missing certification</td><td>CTI not signed before billing period</td><td>Track certification dates in HospiceMD; never bill before CTI signed</td></tr>
+            <tr><td>NOE filed late</td><td>Admission not communicated to billing same day</td><td>Same-day NOE filing protocol; Office Manager tracks all admissions</td></tr>
+            <tr><td>Patient not eligible</td><td>Medicare Part A lapsed or in Medicare Advantage without authorization</td><td>Verify eligibility at admission and monthly for long-stay patients</td></tr>
+            <tr><td>GIP not medically justified</td><td>Documentation does not support inpatient level</td><td>Clinical Director reviews all GIP orders; ensures same-day nursing documentation</td></tr>
+            <tr><td>Duplicate claim</td><td>Claim submitted twice</td><td>Clearinghouse duplicate detection; billing staff reconciles monthly</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">16.5 ADR (Additional Documentation Request) — Survival Guide</div>
+        <div class="alert-box red">
+          <div class="alert-icon">🚨</div>
+          <div class="alert-content">
+            <div class="alert-title">ADR Response Is Time-Critical</div>
+            <div class="alert-text">When CMS or a MAC (Medicare Administrative Contractor) issues an ADR, you have 45 days to respond with all requested documentation. Missing the deadline results in automatic claim denial. Treat every ADR as an emergency. Designate a responsible person for ADR management the day you receive it.</div>
+          </div>
+        </div>
+        <ul class="bullet-list">
+          <li><strong>Step 1:</strong> Receive ADR letter — log the date received; calculate the 45-day response deadline immediately</li>
+          <li><strong>Step 2:</strong> Identify all documents requested — typically: election statement, certifications, face-to-face documentation, IDG notes, visit notes, care plan, medication list</li>
+          <li><strong>Step 3:</strong> Pull from HospiceMD — print all requested documents; verify they are complete and timely</li>
+          <li><strong>Step 4:</strong> If documentation is incomplete — consult with your healthcare attorney before submitting; incomplete documentation submitted as-is may confirm the denial</li>
+          <li><strong>Step 5:</strong> Submit by certified mail with return receipt OR through the MAC's portal — keep proof of submission</li>
+          <li><strong>Step 6:</strong> If claim is denied despite ADR response — appeal within 120 days of denial to Redetermination level; then Reconsideration; then ALJ hearing if still denied</li>
+        </ul>
+      </div>
+    `
+  },
+  {
+    id: "p17",
+    num: "PART XVII",
+    title: "Symptom Management Clinical Protocols",
+    description: "Evidence-based protocols for managing pain, dyspnea, nausea, secretions, delirium, and wounds at end of life — for RN Case Manager reference.",
+    content: `
+      <div class="sub-section">
+        <div class="sub-title">17.1 Pain Management Protocol</div>
+        <div class="alert-box teal">
+          <div class="alert-icon">💊</div>
+          <div class="alert-content">
+            <div class="alert-title">Core Principle: Around-the-Clock Dosing + Breakthrough</div>
+            <div class="alert-text">Effective hospice pain management requires scheduled (around-the-clock) opioid dosing — NOT PRN-only dosing. PRN-only dosing results in pain peaks and valleys and is inadequate for moderate-to-severe chronic pain at end of life. Always prescribe: scheduled opioid + breakthrough dose = 10-15% of total 24-hour morphine equivalent dose, available every 1-4 hours as needed.</div>
+          </div>
+        </div>
+        <div class="sub-title-sm">Opioid Equianalgesic Conversion Reference</div>
+        <table class="data-table">
+          <thead><tr><th>Drug</th><th>Route</th><th>Equianalgesic Dose</th><th>Duration</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Morphine</td><td>Oral</td><td>30 mg</td><td>3–4 hr (IR); 8–12 hr (ER)</td><td>Gold standard reference opioid; excellent for dyspnea</td></tr>
+            <tr><td class="highlight">Morphine</td><td>IV/SC</td><td>10 mg</td><td>3–4 hr</td><td>3:1 oral to IV ratio</td></tr>
+            <tr><td class="highlight">Oxycodone</td><td>Oral</td><td>20 mg</td><td>3–4 hr (IR); 8–12 hr (ER)</td><td>1.5× potency of oral morphine; good if morphine causes nausea</td></tr>
+            <tr><td class="highlight">Hydromorphone (Dilaudid)</td><td>Oral</td><td>7.5 mg</td><td>3–4 hr</td><td>Good alternative if renal impairment (morphine accumulates in renal failure)</td></tr>
+            <tr><td class="highlight">Fentanyl</td><td>Transdermal patch</td><td>25 mcg/hr patch ≈ 60 mg/day oral morphine</td><td>72 hr</td><td>Excellent for patients with swallowing difficulties; 17–24 hr onset — not for acute titration</td></tr>
+            <tr><td class="highlight">Methadone</td><td>Oral</td><td>Complex (non-linear) — consult palliative care physician</td><td>8–36 hr</td><td>Excellent for neuropathic pain; requires specialist initiation; cardiac QTc monitoring</td></tr>
+          </tbody>
+        </table>
+        <div class="sub-title-sm">Opioid Rotation — When and How</div>
+        <ul class="bullet-list">
+          <li>Rotate opioids when: intolerable side effects persist despite dose optimization; inadequate analgesia despite dose escalation; renal or hepatic failure alters metabolism</li>
+          <li>When rotating: calculate total 24-hr morphine equivalent dose; convert to new opioid using equianalgesic table; reduce calculated dose by 25–50% to account for incomplete cross-tolerance; prescribe breakthrough at 10–15% of new total daily dose</li>
+          <li>Always involve Medical Director in opioid rotations for complex patients</li>
+        </ul>
+        <div class="sub-title-sm">Refractory Pain — Palliative Sedation</div>
+        <p class="body-text">When pain cannot be controlled with standard analgesics in the last days of life, palliative sedation may be ethically appropriate. This requires: ethics consultation (or ethics committee review), informed consent of patient or surrogate, physician order, continuous nursing assessment, and careful documentation. Palliative sedation is distinct from euthanasia or physician-assisted death. Consult Medical Director and healthcare ethics resources before implementing.</p>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">17.2 Dyspnea Protocol</div>
+        <p class="body-text">Dyspnea is among the most distressing symptoms at end of life and is often undertreated. Oxygen is commonly requested by families but has limited evidence in non-hypoxic patients and can increase secretions. Low-dose opioids are more effective than oxygen for dyspnea in most hospice patients.</p>
+        <div class="sub-title-sm">Management Algorithm</div>
+        <ul class="bullet-list">
+          <li><strong>Step 1 — Non-pharmacologic:</strong> Fan directed at face (stimulates V2 branch of trigeminal nerve; reduces dyspnea sensation); position upright (semi-Fowlers or tripod); reduce anxiety (calm presence, reassurance, familiar faces)</li>
+          <li><strong>Step 2 — Opioid (first-line pharmacologic):</strong> Low-dose oral morphine — even opioid-naive patients benefit from 2.5–5mg oral morphine every 4 hours; titrate to effect. For opioid-tolerant patients, increase current opioid dose by 25%.</li>
+          <li><strong>Step 3 — Anxiolytic:</strong> Lorazepam 0.5–1mg SL or oral for anxiety component of dyspnea; do not substitute for opioid treatment of dyspnea — treat both components</li>
+          <li><strong>Step 4 — Oxygen:</strong> Trial for 15–30 minutes; continue only if patient reports subjective benefit; discontinue if no reported relief</li>
+          <li><strong>Step 5 — For terminal secretions (death rattle):</strong> Repositioning first; glycopyrrolate 0.2mg SC q4h or atropine 1% ophthalmic drops sublingually; explain to family that this is not distressing to patient despite the sound</li>
+        </ul>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">17.3 Nausea and Vomiting Protocol</div>
+        <div class="sub-title-sm">Identify the Cause — Treatment Follows Etiology</div>
+        <table class="data-table">
+          <thead><tr><th>Cause</th><th>Clinical Clues</th><th>Preferred Agent</th></tr></thead>
+          <tbody>
+            <tr><td>Opioid-induced</td><td>Occurs with opioid initiation or dose increase; often improves after 1–2 weeks</td><td>Prochlorperazine, metoclopramide, or ondansetron; consider opioid rotation</td></tr>
+            <tr><td>Constipation/Bowel obstruction</td><td>No bowel movement; distension; feculent emesis</td><td>Treat constipation; methylnaltrexone if opioid-induced; bowel protocol</td></tr>
+            <tr><td>Gastric stasis</td><td>Fullness after small amounts; early satiety; reflux</td><td>Metoclopramide 10mg before meals; small frequent meals; elevate HOB</td></tr>
+            <tr><td>Brain metastases / increased ICP</td><td>Positional; worse in morning; headache; papilledema</td><td>Dexamethasone; ondansetron; goals of care discussion</td></tr>
+            <tr><td>Metabolic (uremia, hypercalcemia)</td><td>Lab findings if being monitored; altered mental status</td><td>Haloperidol; goals of care discussion regarding lab monitoring in hospice</td></tr>
+            <tr><td>Anxiety/Psychogenic</td><td>Anticipatory; situational triggers</td><td>Lorazepam; behavioral interventions; chaplain/MSW</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">17.4 Wound Management in Hospice — Kennedy Terminal Ulcer</div>
+        <p class="body-text">Hospice wound care differs fundamentally from acute care wound care. The goal is comfort, not healing. Aggressive wound debridement, wet-to-dry dressings, and painful wound care are inappropriate for most hospice patients. The priority is: odor control, pain control, infection management, and family caregiver education.</p>
+        <div class="alert-box gold">
+          <div class="alert-icon">⚠️</div>
+          <div class="alert-content">
+            <div class="alert-title">Kennedy Terminal Ulcer — Not a Quality of Care Issue</div>
+            <div class="alert-text">Kennedy Terminal Ulcers (KTUs) are skin breakdown that occurs in the last days of life due to circulatory failure — not due to inadequate care. They typically appear suddenly on the sacrum, coccyx, or heels as butterfly-shaped necrotic areas. Document as KTU; educate family; do not misclassify as pressure injury due to neglect. Proper identification protects the agency from liability.</div>
+          </div>
+        </div>
+        <div class="sub-title-sm">Hospice Wound Care Goals</div>
+        <ul class="bullet-list">
+          <li>Odor control: activated charcoal dressings (Carboflex, CarboFlex); metronidazole gel applied topically for malodorous wounds</li>
+          <li>Pain management at dressing changes: premedicate with breakthrough analgesic 30–45 minutes before planned dressing change</li>
+          <li>Moisture management: use absorptive dressings (foam, alginate) for heavily exudating wounds; avoid wet-to-dry gauze</li>
+          <li>Infection: treat surface infection/odor with topical antiseptics; systemic antibiotics only if infection is causing significant symptom burden AND consistent with goals of care</li>
+          <li>Family education: teach dressing change procedure; provide supplies; document teaching in HospiceMD</li>
+        </ul>
+      </div>
+    `
+  },
+  {
+    id: "p18",
+    num: "PART XVIII",
+    title: "California End of Life Option Act (EOLOA) — What Hospice Must Know",
+    description: "Hospice staff obligations, documentation requirements, and agency policy requirements under California's End of Life Option Act (AB 15 — Health and Safety Code 443 et seq).",
+    content: `
+      <div class="sub-section">
+        <div class="sub-title">18.1 EOLOA Overview</div>
+        <p class="body-text">California's End of Life Option Act (effective June 9, 2016; amended 2021) allows terminally ill California adults to request a prescription for an aid-in-dying drug if they meet strict eligibility criteria. As a hospice agency, you will encounter patients and families who raise this option. Your staff must understand the law and your agency's participation policy — and every patient must be informed of their right to use the option regardless of whether the agency participates.</p>
+        <div class="sub-title-sm">EOLOA Eligibility Requirements (All Must Be Met)</div>
+        <ul class="bullet-list">
+          <li>California resident, 18 years or older</li>
+          <li>Diagnosed with a terminal illness that will cause death within 6 months</li>
+          <li>Capable of making and communicating healthcare decisions</li>
+          <li>Able to self-administer the medication (cannot be administered by another person)</li>
+          <li>Two oral requests to the attending physician, at least 48 hours apart (amended 2021 — previously 15 days)</li>
+          <li>One written request signed by two witnesses</li>
+          <li>Attending physician confirms eligibility; consulting physician provides second opinion</li>
+          <li>Mental health evaluation may be required if competency is in question</li>
+        </ul>
+        <div class="sub-title-sm">Hospice Agency Participation Decision</div>
+        <p class="body-text">Hospice agencies in California have three options:</p>
+        <ul class="bullet-list">
+          <li><strong>Full Participation:</strong> Agency and physicians participate in EOLOA requests; Medical Director or attending can serve as prescribing physician</li>
+          <li><strong>Non-Participation:</strong> Agency and its employed physicians conscientiously object and will not participate; must notify patients of this policy and transfer care to a willing provider</li>
+          <li><strong>Partial Participation:</strong> Agency allows participation by willing physicians but does not require all physicians to participate</li>
+        </ul>
+        <div class="alert-box red">
+          <div class="alert-icon">🚨</div>
+          <div class="alert-content">
+            <div class="alert-title">Non-Participation Does NOT Mean Non-Disclosure</div>
+            <div class="alert-text">Even if your agency has a conscientious objection policy, California law REQUIRES that you inform patients about the End of Life Option Act upon request and provide a referral to a willing provider. Failure to inform patients is a violation. This must be reflected in your written policies and in your Notice of Patient Rights provided at admission.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">18.2 Required EOLOA Documentation in HospiceMD</div>
+        <ul class="bullet-list">
+          <li>Document any patient or family inquiry about EOLOA — date, who asked, information provided</li>
+          <li>If patient requests to pursue EOLOA — document: oral requests with dates; written request with witness signatures; physician consultations</li>
+          <li>If agency non-participating — document: patient notified of agency policy; patient offered transfer or referral to willing provider; patient decision</li>
+          <li>If patient self-administers EOLOA drug — document time of death; manner of death as terminal illness (the aid-in-dying drug is not listed as cause of death in California); complete death documentation as with any patient death</li>
+          <li>Hospice staff may NOT administer the EOLOA medication — self-administration is a legal requirement of the Act</li>
+        </ul>
+      </div>
+    `
+  },
+  {
+    id: "p19",
+    num: "PART XIX",
+    title: "QAPI Program — Complete Implementation Guide",
+    description: "Build a QAPI program that satisfies 42 CFR 418.58, JCAHO standards, and CDPH expectations — with committee structure, indicators, data collection, and improvement plans.",
+    content: `
+      <div class="sub-section">
+        <div class="sub-title">19.1 CMS QAPI Requirements (42 CFR 418.58)</div>
+        <p class="body-text">CMS requires every Medicare-certified hospice to have a QAPI program that: (1) reflects the complexity of the hospice organization; (2) focuses on indicators related to improved palliative outcomes; (3) tracks adverse events and near misses; (4) implements measurable improvements. A QAPI program is not a form — it is a living system. Surveyors will ask you to demonstrate improvement, not just data collection.</p>
+        <div class="sub-title-sm">QAPI Committee — Required Structure</div>
+        <ul class="bullet-list">
+          <li>Governing Body representative — oversight and accountability</li>
+          <li>Administrator or designee — operational leadership</li>
+          <li>Medical Director — clinical quality oversight</li>
+          <li>Director of Patient Care Services — clinical operations</li>
+          <li>RN representative — frontline clinical perspective</li>
+          <li>Social Work representative</li>
+          <li>At minimum one other IDG discipline (Chaplain, HHA Coordinator)</li>
+          <li>Meeting frequency: minimum quarterly; recommended monthly</li>
+          <li>Documentation: written minutes; attendance; all indicator data reviewed; improvement actions assigned and tracked</li>
+        </ul>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">19.2 Required Quality Indicators — Track All of These</div>
+        <table class="data-table">
+          <thead><tr><th>Indicator</th><th>Numerator</th><th>Denominator</th><th>Target / Benchmark</th><th>CMS Standard</th></tr></thead>
+          <tbody>
+            <tr><td class="highlight">Pain Screening at Admission</td><td>Patients with pain screening documented at admission</td><td>All admissions</td><td>100%</td><td>42 CFR 418.54</td></tr>
+            <tr><td class="highlight">IDG Meeting Timeliness</td><td>IDG meetings held within 5 days of admission</td><td>All admissions</td><td>100%</td><td>42 CFR 418.56(c)</td></tr>
+            <tr><td class="highlight">Care Plan Completion</td><td>Care plans completed within 5 calendar days of admission</td><td>All admissions</td><td>100%</td><td>42 CFR 418.56(b)</td></tr>
+            <tr><td class="highlight">NOE Timeliness</td><td>NOEs filed within 5 calendar days of election</td><td>All elections</td><td>100%</td><td>42 CFR 418.24</td></tr>
+            <tr><td class="highlight">Certification Timeliness</td><td>Certifications signed before billing period begins</td><td>All benefit periods</td><td>100%</td><td>42 CFR 418.22</td></tr>
+            <tr><td class="highlight">Falls with Injury</td><td>Patient falls resulting in injury during hospice care</td><td>Total patient days</td><td>Rate per 1,000 patient days; compare to national benchmark</td><td>JCAHO; QAPI</td></tr>
+            <tr><td class="highlight">Complaints Received</td><td>Number of complaints received per quarter</td><td>Average patient census</td><td>Monitor trend; any complaint investigated within 10 days</td><td>42 CFR 418.52</td></tr>
+            <tr><td class="highlight">Bereavement Contact Compliance</td><td>Families receiving bereavement contacts on schedule</td><td>Total deceased patient families in 13-month window</td><td>100%</td><td>42 CFR 418.64(d)</td></tr>
+            <tr><td class="highlight">HHA Supervisory Visit Compliance</td><td>RN supervisory visits conducted within 14 days</td><td>All patients with active HHA service</td><td>100%</td><td>42 CFR 418.76</td></tr>
+            <tr><td class="highlight">Medication Error Rate</td><td>Documented medication errors or near-misses</td><td>Total patient days</td><td>Rate; trend downward; root cause analysis for all events</td><td>Patient safety; JCAHO</td></tr>
+            <tr><td class="highlight">Employee Turnover Rate</td><td>Employees who separated in rolling 12 months</td><td>Average workforce size</td><td>Below 30% for clinical staff (hospice industry benchmark)</td><td>JCAHO HR standards</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sub-section">
+        <div class="sub-title">19.3 QAPI Improvement Project — How to Run One</div>
+        <p class="body-text">Surveyors want to see completed improvement cycles — not just tracking. Every 6–12 months, run one formal QAPI improvement project using the PDSA (Plan-Do-Study-Act) model:</p>
+        <ul class="bullet-list">
+          <li><strong>Plan:</strong> Identify the problem from your data; set a specific, measurable improvement goal with a timeline; identify the root cause (use fishbone or 5-Why analysis)</li>
+          <li><strong>Do:</strong> Implement the improvement intervention — could be a new process, staff education, workflow change, or technology solution</li>
+          <li><strong>Study:</strong> Measure the outcome — did the indicator improve? Use the same methodology as your baseline measurement</li>
+          <li><strong>Act:</strong> If it worked, standardize the change. If it did not, revise and cycle again. Document both successes and failures — surveyors value honest continuous improvement over perfect performance.</li>
+        </ul>
+        <p class="body-text">Document every PDSA cycle in QAPI committee minutes. Keep a running QAPI project log that shows: problem identified, goal, intervention, measurement period, result, action taken. This is what surveyors will review.</p>
+      </div>
+    `
+  }
+];
+
+// ════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════
+let checkState = {};
+try { checkState = JSON.parse(localStorage.getItem('hospice_checks') || '{}'); } catch(e) {}
+
+function saveChecks() {
+  try { localStorage.setItem('hospice_checks', JSON.stringify(checkState)); } catch(e) {}
+}
+
+// ════════════════════════════════════════════════════════════
+// BUILD SIDEBAR NAV
+// ════════════════════════════════════════════════════════════
+function buildNav() {
+  const nav = document.getElementById('sidebarNav');
+  nav.innerHTML = '';
+
+  const label = document.createElement('div');
+  label.className = 'nav-section-label';
+  label.textContent = 'All Sections';
+  nav.appendChild(label);
+
+  parts.forEach(part => {
+    const item = document.createElement('div');
+    item.className = 'nav-item';
+    item.dataset.id = part.id;
+
+    let progressStr = '';
+    if (part.hasChecklist) {
+      const totals = getTotals(part);
+      progressStr = `${totals.done}/${totals.total}`;
+      item.classList.add('has-checks');
+    }
+
+    item.innerHTML = `
+      <span class="nav-num">${part.num.split(' ')[1] || part.num}</span>
+      <span class="nav-label">${part.title}</span>
+      ${part.hasChecklist ? `<span class="nav-progress">${progressStr}</span>` : ''}
+    `;
+
+    item.addEventListener('click', () => scrollToSection(part.id));
+    nav.appendChild(item);
+  });
+}
+
+function getTotals(part) {
+  if (!part.hasChecklist) return {done:0, total:0};
+  let total = 0, done = 0;
+  part.checklistCategories.forEach(cat => {
+    cat.items.forEach((_, i) => {
+      const key = `${cat.id}_${i}`;
+      total++;
+      if (checkState[key]) done++;
+    });
+  });
+  return {done, total};
+}
+
+// ════════════════════════════════════════════════════════════
+// BUILD CONTENT
+// ════════════════════════════════════════════════════════════
+function buildContent() {
+  const area = document.getElementById('content-area');
+  area.innerHTML = '';
+
+  parts.forEach(part => {
+    const section = document.createElement('section');
+    section.className = 'part-section';
+    section.id = `sec_${part.id}`;
+
+    let inner = `
+      <div class="part-header">
+        <div class="part-number">${part.num}</div>
+        <div class="part-title-wrap">
+          <div class="part-title">${part.title}</div>
+          <div class="part-description">${part.description}</div>
+        </div>
+      </div>
+    `;
+
+    if (part.hasChecklist) {
+      inner += buildChecklist(part);
+    } else {
+      inner += part.content || '';
+    }
+
+    section.innerHTML = inner;
+
+    if (part.hasChecklist) {
+      section.querySelectorAll('.check-item').forEach(el => {
+        el.addEventListener('click', () => toggleCheck(el, part));
+      });
+    }
+
+    area.appendChild(section);
+  });
+}
+
+function buildChecklist(part) {
+  let html = '';
+  part.checklistCategories.forEach(cat => {
+    const totals = getCatTotals(cat);
+    html += `
+      <div class="sub-section">
+        <div class="category-header" id="catheader_${cat.id}">
+          <div class="category-header-left">
+            <div class="category-header-title">${cat.title}</div>
+            <div class="category-header-sub">${cat.sub}</div>
+          </div>
+          <div class="category-progress">
+            <div class="category-pct" id="catpct_${cat.id}">${totals.pct}%</div>
+            <div class="category-done-label" id="catdone_${cat.id}">${totals.done} of ${totals.total} done</div>
+          </div>
+        </div>
+        <div class="checklist" id="checklist_${cat.id}">
+    `;
+    cat.items.forEach((item, i) => {
+      const key = `${cat.id}_${i}`;
+      const isDone = !!checkState[key];
+      html += `
+        <div class="check-item ${isDone ? 'done' : ''}" data-key="${key}" data-catid="${cat.id}">
+          <div class="check-box">
+            <svg width="11" height="9" viewBox="0 0 11 9" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 4.5L4 7.5L10 1"/>
+            </svg>
+          </div>
+          <div class="check-text">${item}</div>
+        </div>
+      `;
+    });
+    html += '</div></div>';
+  });
+  return html;
+}
+
+function getCatTotals(cat) {
+  let total = cat.items.length, done = 0;
+  cat.items.forEach((_, i) => {
+    if (checkState[`${cat.id}_${i}`]) done++;
+  });
+  const pct = total ? Math.round(done/total*100) : 0;
+  return {total, done, pct};
+}
+
+function toggleCheck(el, part) {
+  const key = el.dataset.key;
+  const catId = el.dataset.catid;
+  checkState[key] = !checkState[key];
+  el.classList.toggle('done', checkState[key]);
+  saveChecks();
+  updateTotals(part, catId);
+  updateNavProgress(part.id);
+  updateOverallProgress();
+}
+
+function updateTotals(part, catId) {
+  const cat = part.checklistCategories.find(c => c.id === catId);
+  if (!cat) return;
+  const t = getCatTotals(cat);
+  const pctEl = document.getElementById(`catpct_${catId}`);
+  const doneEl = document.getElementById(`catdone_${catId}`);
+  if (pctEl) pctEl.textContent = `${t.pct}%`;
+  if (doneEl) doneEl.textContent = `${t.done} of ${t.total} done`;
+}
+
+function updateNavProgress(partId) {
+  const part = parts.find(p => p.id === partId);
+  if (!part || !part.hasChecklist) return;
+  const t = getTotals(part);
+  const navItem = document.querySelector(`.nav-item[data-id="${partId}"] .nav-progress`);
+  if (navItem) navItem.textContent = `${t.done}/${t.total}`;
+}
+
+function updateOverallProgress() {
+  let total = 0, done = 0;
+  parts.forEach(p => {
+    if (p.hasChecklist) {
+      const t = getTotals(p);
+      total += t.total;
+      done += t.done;
+    }
+  });
+  const pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById('progressFill').style.width = `${pct}%`;
+  document.getElementById('progressPct').textContent = `${pct}%`;
+  document.getElementById('completedChecks').textContent = done;
+  document.getElementById('totalChecks').textContent = total;
+}
+
+// ════════════════════════════════════════════════════════════
+// SCROLL & NAV
+// ════════════════════════════════════════════════════════════
+function scrollToSection(id) {
+  const el = document.getElementById(`sec_${id}`);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    closeSidebar();
+  }
+}
+
+function setActiveNav(id) {
+  document.querySelectorAll('.nav-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.id === id);
+  });
+}
+
+// Intersection observer for active nav
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id.replace('sec_', '');
+      setActiveNav(id);
+    }
+  });
+}, { threshold: 0.15 });
+
+// ════════════════════════════════════════════════════════════
+// SEARCH
+// ════════════════════════════════════════════════════════════
+document.getElementById('searchInput').addEventListener('input', function() {
+  const q = this.value.toLowerCase().trim();
+  document.querySelectorAll('.nav-item').forEach(el => {
+    const label = el.querySelector('.nav-label').textContent.toLowerCase();
+    el.style.display = (!q || label.includes(q)) ? '' : 'none';
+  });
+});
+
+// ════════════════════════════════════════════════════════════
+// MOBILE SIDEBAR
+// ════════════════════════════════════════════════════════════
+const toggle = document.getElementById('menu-toggle');
+const sidebar = document.getElementById('sidebar');
+let sidebarOpen = false;
+
+toggle.addEventListener('click', () => {
+  sidebarOpen = !sidebarOpen;
+  sidebar.classList.toggle('open', sidebarOpen);
+});
+
+function closeSidebar() {
+  if (window.innerWidth <= 900) {
+    sidebarOpen = false;
+    sidebar.classList.remove('open');
+  }
+}
+
+document.addEventListener('click', (e) => {
+  if (sidebarOpen && !sidebar.contains(e.target) && !toggle.contains(e.target)) {
+    closeSidebar();
+  }
+});
+
+// ════════════════════════════════════════════════════════════
+// BACK TO TOP
+// ════════════════════════════════════════════════════════════
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('show', window.scrollY > 400);
+}, {passive: true});
+btt.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+
+// ════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════
+buildNav();
+buildContent();
+updateOverallProgress();
+
+// Attach intersection observers after build
+document.querySelectorAll('.part-section').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
