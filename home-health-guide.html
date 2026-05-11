@@ -2,7 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CAHHA — California Home Health Agency Operational Bible by ARAYA Consulting. Complete guide to CDPH licensing, Medicare CoPs, OASIS, QAPI, and home health operations in California.">
+<meta name="keywords" content="California home health agency guide, CAHHA, home health CDPH license, Medicare home health CoP, OASIS California, home health operations guide">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.arayaconsulting.com/home-health-guide.html">
 <title>CAHHA — California Home Health Agency Operational Bible</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2359,21 +2365,4 @@ function toggleCard(header) {
 
 document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-    const navLinks = Array.from(document.querySelectorAll('.nav-link'));
-    const activeIdx = navLinks.findIndex(l => l.classList.contains('active'));
-    let nextIdx;
-    if (e.key === 'ArrowRight') nextIdx = (activeIdx + 1) % navLinks.length;
-    else nextIdx = (activeIdx - 1 + navLinks.length) % navLinks.length;
-    if (navLinks[nextIdx]) navLinks[nextIdx].click();
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.gov-card.open .gov-card-body').forEach(b => {
-    b.style.maxHeight = '3000px';
-  });
-  calcPDGM();
-});
-</script>
-</body>
-</html>
+    const navLinks = Arr
