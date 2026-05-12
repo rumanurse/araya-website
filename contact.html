@@ -584,33 +584,84 @@ footer{background:var(--dark);padding:28px 48px;display:flex;align-items:center;
             <label class="field-label">Where are you in the process? <span class="req">*</span></label>
             <div class="options-grid cols-2">
               <label class="option-card">
-                <input type="radio" name="Agency Stage" value="Brand new — just getting started" required/>
+                <input type="radio" name="Agency Stage" value="Brand new — just getting started" required onchange="togglePatientCount(this)"/>
                 <div>
                   <div class="option-label">🌱 Brand New</div>
                   <div class="option-sub">Just getting started, no agency yet</div>
                 </div>
               </label>
               <label class="option-card">
-                <input type="radio" name="Agency Stage" value="In the planning stage"/>
+                <input type="radio" name="Agency Stage" value="In the planning stage" onchange="togglePatientCount(this)"/>
                 <div>
                   <div class="option-label">📐 Planning Stage</div>
                   <div class="option-sub">Researching and planning</div>
                 </div>
               </label>
               <label class="option-card">
-                <input type="radio" name="Agency Stage" value="In the application / licensing process"/>
+                <input type="radio" name="Agency Stage" value="In the application / licensing process" onchange="togglePatientCount(this)"/>
                 <div>
                   <div class="option-label">📋 In Application</div>
                   <div class="option-sub">Already applying for licenses</div>
                 </div>
               </label>
               <label class="option-card">
-                <input type="radio" name="Agency Stage" value="Already operating — need help"/>
+                <input type="radio" name="Agency Stage" value="Already operating — need help" onchange="togglePatientCount(this)"/>
                 <div>
                   <div class="option-label">🏥 Already Operating</div>
                   <div class="option-sub">Agency is open, need support</div>
                 </div>
               </label>
+            </div>
+          </div>
+
+          <!-- Patient count — shown only for operating agencies -->
+          <div id="patient-count-field" style="display:none;">
+            <div class="field">
+              <label class="field-label">Approximately how many patients do you currently serve?</label>
+              <div class="options-grid cols-2">
+                <label class="option-card">
+                  <input type="radio" name="Current Patient Census" value="1–10 patients"/>
+                  <div>
+                    <div class="option-label">1 – 10 patients</div>
+                    <div class="option-sub">Early stage / newly open</div>
+                  </div>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="Current Patient Census" value="11–25 patients"/>
+                  <div>
+                    <div class="option-label">11 – 25 patients</div>
+                    <div class="option-sub">Growing census</div>
+                  </div>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="Current Patient Census" value="26–50 patients"/>
+                  <div>
+                    <div class="option-label">26 – 50 patients</div>
+                    <div class="option-sub">Established agency</div>
+                  </div>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="Current Patient Census" value="51–100 patients"/>
+                  <div>
+                    <div class="option-label">51 – 100 patients</div>
+                    <div class="option-sub">Mid-size operation</div>
+                  </div>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="Current Patient Census" value="101–250 patients"/>
+                  <div>
+                    <div class="option-label">101 – 250 patients</div>
+                    <div class="option-sub">Large agency</div>
+                  </div>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="Current Patient Census" value="250+ patients"/>
+                  <div>
+                    <div class="option-label">250+ patients</div>
+                    <div class="option-sub">High-volume operation</div>
+                  </div>
+                </label>
+              </div>
             </div>
           </div>
 
@@ -712,125 +763,60 @@ footer{background:var(--dark);padding:28px 48px;display:flex;align-items:center;
         <!-- ═══ PAGE 3: SERVICES ═══ -->
         <div class="form-page" id="page-3">
           <div class="form-page-title">What do you need help with?</div>
-          <p class="form-page-sub">Select everything that applies — we'll build a plan tailored exactly for you.</p>
+          <p class="form-page-sub">Select everything that applies — we'll build a custom plan and reach out with a tailored estimate.</p>
 
           <div class="field">
             <label class="field-label">Services needed <span style="font-weight:400;color:var(--light)">(select all that apply)</span></label>
-            <div style="font-size:12px;color:var(--light);margin-bottom:12px;">Pricing shown is a starting estimate. Final investment is scoped to your agency's specific needs.</div>
             <div class="options-grid">
-
-              <label class="option-card" style="justify-content:space-between;align-items:flex-start;">
-                <div style="display:flex;align-items:flex-start;gap:12px;">
-                  <input type="checkbox" name="Services Needed" value="Full Startup & Licensing (CDPH application)"/>
-                  <div>
-                    <div class="option-label">🏗️ Full Startup &amp; Licensing</div>
-                    <div class="option-sub">CDPH application, business setup, entity formation, full launch support</div>
-                  </div>
-                </div>
-                <div style="flex-shrink:0;margin-left:12px;text-align:right;">
-                  <div style="font-size:13px;font-weight:700;color:var(--gold);">Starting at</div>
-                  <div style="font-size:15px;font-weight:700;color:var(--dark);">$12,000</div>
+              <label class="option-card">
+                <input type="checkbox" name="Services Needed" value="Full Startup & Licensing (CDPH application)"/>
+                <div>
+                  <div class="option-label">🏗️ Full Startup &amp; Licensing</div>
+                  <div class="option-sub">CDPH application, business setup, entity formation, full launch support</div>
                 </div>
               </label>
-
-              <label class="option-card" style="justify-content:space-between;align-items:flex-start;">
-                <div style="display:flex;align-items:flex-start;gap:12px;">
-                  <input type="checkbox" name="Services Needed" value="Medicare Certification (CMS / CoPs)"/>
-                  <div>
-                    <div class="option-label">🏥 Medicare Certification</div>
-                    <div class="option-sub">CMS enrollment, Conditions of Participation compliance, survey prep</div>
-                  </div>
-                </div>
-                <div style="flex-shrink:0;margin-left:12px;text-align:right;">
-                  <div style="font-size:13px;font-weight:700;color:var(--gold);">Starting at</div>
-                  <div style="font-size:15px;font-weight:700;color:var(--dark);">$8,500</div>
+              <label class="option-card">
+                <input type="checkbox" name="Services Needed" value="Medicare Certification (CMS / CoPs)"/>
+                <div>
+                  <div class="option-label">🏥 Medicare Certification</div>
+                  <div class="option-sub">CMS enrollment, Conditions of Participation compliance, survey prep</div>
                 </div>
               </label>
-
-              <label class="option-card" style="justify-content:space-between;align-items:flex-start;">
-                <div style="display:flex;align-items:flex-start;gap:12px;">
-                  <input type="checkbox" name="Services Needed" value="Forms & Documentation Preparation"/>
-                  <div>
-                    <div class="option-label">📄 Forms &amp; Documentation Prep</div>
-                    <div class="option-sub">Policies, procedures, clinical forms, P&amp;P manuals, QAPI tools</div>
-                  </div>
-                </div>
-                <div style="flex-shrink:0;margin-left:12px;text-align:right;">
-                  <div style="font-size:13px;font-weight:700;color:var(--gold);">Starting at</div>
-                  <div style="font-size:15px;font-weight:700;color:var(--dark);">$4,500</div>
+              <label class="option-card">
+                <input type="checkbox" name="Services Needed" value="Forms & Documentation Preparation"/>
+                <div>
+                  <div class="option-label">📄 Forms &amp; Documentation Prep</div>
+                  <div class="option-sub">Policies, procedures, clinical forms, P&amp;P manuals, QAPI tools</div>
                 </div>
               </label>
-
-              <label class="option-card" style="justify-content:space-between;align-items:flex-start;">
-                <div style="display:flex;align-items:flex-start;gap:12px;">
-                  <input type="checkbox" name="Services Needed" value="Compliance & Survey Readiness"/>
-                  <div>
-                    <div class="option-label">⚖️ Compliance &amp; Survey Readiness</div>
-                    <div class="option-sub">Mock surveys, deficiency response, QAPI programs, ongoing audit support</div>
-                  </div>
-                </div>
-                <div style="flex-shrink:0;margin-left:12px;text-align:right;">
-                  <div style="font-size:13px;font-weight:700;color:var(--gold);">Starting at</div>
-                  <div style="font-size:15px;font-weight:700;color:var(--dark);">$3,500</div>
+              <label class="option-card">
+                <input type="checkbox" name="Services Needed" value="Compliance & Survey Readiness"/>
+                <div>
+                  <div class="option-label">⚖️ Compliance &amp; Survey Readiness</div>
+                  <div class="option-sub">Mock surveys, deficiency response, QAPI programs, ongoing audit support</div>
                 </div>
               </label>
-
-              <label class="option-card" style="justify-content:space-between;align-items:flex-start;">
-                <div style="display:flex;align-items:flex-start;gap:12px;">
-                  <input type="checkbox" name="Services Needed" value="In-Services & Staff Training"/>
-                  <div>
-                    <div class="option-label">👥 In-Services &amp; Staff Training</div>
-                    <div class="option-sub">Clinical education, IDT training, staff onboarding, annual in-services</div>
-                  </div>
-                </div>
-                <div style="flex-shrink:0;margin-left:12px;text-align:right;">
-                  <div style="font-size:13px;font-weight:700;color:var(--gold);">Starting at</div>
-                  <div style="font-size:15px;font-weight:700;color:var(--dark);">$1,200<span style="font-size:11px;font-weight:500;">/session</span></div>
+              <label class="option-card">
+                <input type="checkbox" name="Services Needed" value="In-Services & Staff Training"/>
+                <div>
+                  <div class="option-label">👥 In-Services &amp; Staff Training</div>
+                  <div class="option-sub">Clinical education, IDT training, staff onboarding, annual in-services</div>
                 </div>
               </label>
-
-              <label class="option-card" style="justify-content:space-between;align-items:flex-start;">
-                <div style="display:flex;align-items:flex-start;gap:12px;">
-                  <input type="checkbox" name="Services Needed" value="Ongoing Guidance & Consulting Retainer"/>
-                  <div>
-                    <div class="option-label">🤝 Ongoing Guidance &amp; Retainer</div>
-                    <div class="option-sub">Continuous support, regulatory updates, and advisory as your agency scales</div>
-                  </div>
-                </div>
-                <div style="flex-shrink:0;margin-left:12px;text-align:right;">
-                  <div style="font-size:13px;font-weight:700;color:var(--gold);">Starting at</div>
-                  <div style="font-size:15px;font-weight:700;color:var(--dark);">$2,500<span style="font-size:11px;font-weight:500;">/mo</span></div>
+              <label class="option-card">
+                <input type="checkbox" name="Services Needed" value="Ongoing Guidance & Consulting Retainer"/>
+                <div>
+                  <div class="option-label">🤝 Ongoing Guidance &amp; Retainer</div>
+                  <div class="option-sub">Continuous support, regulatory updates, and advisory as your agency scales</div>
                 </div>
               </label>
-
-              <label class="option-card" style="justify-content:space-between;align-items:flex-start;border-color:var(--gold);background:rgba(184,134,11,0.04);">
-                <div style="display:flex;align-items:flex-start;gap:12px;">
-                  <input type="checkbox" name="Services Needed" value="Everything — Full-Scope Consulting ($45,000)"/>
-                  <div>
-                    <div class="option-label" style="color:var(--gold);font-weight:700;">✨ Everything — Full Scope</div>
-                    <div class="option-sub">All services above — from zero to fully licensed, certified, and operating. Our most comprehensive package. Includes all documentation, licensing, Medicare certification, training, compliance, and 3 months of retainer support.</div>
-                  </div>
-                </div>
-                <div style="flex-shrink:0;margin-left:12px;text-align:right;">
-                  <div style="font-size:11px;font-weight:700;color:var(--teal);letter-spacing:0.05em;">BEST VALUE</div>
-                  <div style="font-size:19px;font-weight:700;color:var(--gold);">$45,000</div>
+              <label class="option-card" style="border-color:var(--gold);background:rgba(184,134,11,0.04);">
+                <input type="checkbox" name="Services Needed" value="Everything — Full-Scope Consulting"/>
+                <div>
+                  <div class="option-label" style="color:var(--gold);font-weight:700;">✨ Everything — Full Scope</div>
+                  <div class="option-sub">All of the above — from zero to fully licensed, certified, and operating. Our most comprehensive package.</div>
                 </div>
               </label>
-
-            </div>
-          </div>
-
-          <hr class="form-divider"/>
-
-          <div class="field">
-            <label class="field-label">What is your investment range? <span style="font-weight:400;color:var(--light)">(helps us plan your package)</span></label>
-            <div class="budget-grid">
-              <label class="budget-pill"><input type="radio" name="Budget" value="Under $5,000"/> Under $5,000</label>
-              <label class="budget-pill"><input type="radio" name="Budget" value="$5,000 – $10,000"/> $5,000 – $10,000</label>
-              <label class="budget-pill"><input type="radio" name="Budget" value="$10,000 – $20,000"/> $10,000 – $20,000</label>
-              <label class="budget-pill"><input type="radio" name="Budget" value="$20,000 – $45,000"/> $20,000 – $45,000</label>
-              <label class="budget-pill"><input type="radio" name="Budget" value="$45,000+ (Full Scope)"/> $45,000+ Full Scope</label>
-              <label class="budget-pill"><input type="radio" name="Budget" value="Let's discuss — not sure yet"/> Let's discuss 🤝</label>
             </div>
           </div>
 
@@ -929,13 +915,23 @@ const totalPages = 4;
 let currentPage = 1;
 
 function toggleOtherLicense(e) {
-  // Let the checkbox state update first
   setTimeout(function() {
     const checked = document.getElementById('other-license-check').checked;
     const field = document.getElementById('other-license-field');
     field.style.display = checked ? 'block' : 'none';
     if (!checked) document.getElementById('other-license-text').value = '';
   }, 0);
+}
+
+function togglePatientCount(radio) {
+  const patientField = document.getElementById('patient-count-field');
+  if (radio.value === 'Already operating — need help') {
+    patientField.style.display = 'block';
+  } else {
+    patientField.style.display = 'none';
+    // Clear selection if hidden
+    document.querySelectorAll('input[name="Current Patient Census"]').forEach(r => r.checked = false);
+  }
 }
 
 function goToPage(n) {
