@@ -2366,4 +2366,13 @@ function toggleCard(header) {
 
 document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-    const navLinks = Arr
+    const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+    const active = document.querySelector('.nav-link.active');
+    const idx = navLinks.indexOf(active);
+    if (e.key === 'ArrowRight' && idx < navLinks.length - 1) navLinks[idx + 1].click();
+    if (e.key === 'ArrowLeft' && idx > 0) navLinks[idx - 1].click();
+  }
+});
+</script>
+</body>
+</html>
